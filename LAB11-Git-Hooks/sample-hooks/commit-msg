@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Sample commit-msg hook for Git
+# This script validates the format of commit messages
+#
+# To install: Copy to .git/hooks/commit-msg and make executable (chmod +x)
+
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+echo "==============================================="
+echo "Running commit-msg hook. Validating commit message..."
+echo "==============================================="
+
+# Check message length (minimum 10 characters)
+if [ ${#commit_msg} -lt 10 ]; then
+    echo "❌ Error: Commit message too short."
+    echo "   Commit messages must be at least 10 characters long."
+    exit 1
+fi
+
+# Check first letter is capitalized
+first_char=$(echo "$commit_msg" | head -1 | cut -c1)
+if ! [[ "$first_char" =~ [A-Z] ]]; then
+    echo "❌ Error: Commit message must start with a capital letter."
+    exit 1
+fi
+
+# Check message doesn't end with a period
+last_char=$(echo "$commit_msg" | head -1 | grep -o '.$')
+if [ "$last_char" == "." ]; then
+    echo "❌ Error: Commit message should not end with a period."
+    exit 1
+fi
+
+# Check for conventional commit format (optional)
+# Format: type(scope): description
+# Example: feat(auth): Add login functionality
+conventional_format="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9\-]+\))?: [A-Z].+"
+
+if ! echo "$commit_msg" | head -1 | grep -qE "$conventional_format"; then
+    echo "⚠️ Warning: Commit message doesn't follow conventional commit format."
+    echo "   Recommended format: type(scope): Description"
+    echo "   Example: feat(auth): Add login functionality"
+    # Uncomment to enforce conventional commit format
+    # exit 1
+fi
+
+echo "✅ Commit message validation passed!"
+exit 0 

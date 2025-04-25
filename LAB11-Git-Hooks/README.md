@@ -1,98 +1,74 @@
-# LAB11 - Git Hooks (Local Automation)
+# LAB11: Git Hooks (Local Automation)
 
-Git hooks allow you to automate tasks when specific Git events occur — like before a commit, after a merge, or before pushing. In this lab, you'll create a pre-commit hook that checks your code.
+This lab introduces Git hooks, a powerful way to automate tasks during the Git workflow. Git hooks are scripts that Git executes before or after events such as commit, push, and merge.
 
----
+## Learning Objectives
 
-## 🎯 Objectives
+- Understand Git hooks and their role in the Git workflow
+- Create and implement different types of Git hooks
+- Use hooks to enforce code quality standards
+- Automate repetitive tasks in your development workflow
+- Apply hooks to enforce team development policies
 
-By the end of this lab, you will:
-- Understand what Git hooks are and how they work
-- Create a `pre-commit` hook that runs checks before committing
-- Use shell scripting to enforce rules
+## Prerequisites
 
----
+- Git installed on your system
+- Basic command-line knowledge
+- Basic shell scripting familiarity
+- Python installed for code checking examples
 
-## 🧰 Prerequisites
+## Lab Overview
 
-- Git installed
-- Bash or shell scripting environment
-- Optional: `flake8` or `black` for linting checks
+Git hooks provide a way to execute custom scripts when specific Git events occur. In this lab, you'll create several types of hooks to automate common development tasks and enforce best practices. You'll work with pre-commit hooks for code validation, commit-message hooks for standardization, and post-commit hooks for notifications.
 
----
+## Lab Tasks
 
-## 📁 Lab Structure
+### Part 1: Understanding Git Hooks
+
+1. Explore the default Git hooks directory
+2. Examine the sample hooks that Git provides
+3. Understand the different hook types and when they execute
+
+### Part 2: Creating Basic Hooks
+
+1. Create a simple pre-commit hook
+2. Implement a commit message validation hook
+3. Set up a post-commit notification hook
+4. Create a pre-push validation hook
+
+### Part 3: Advanced Hook Implementation
+
+1. Implement code quality checks using linting tools
+2. Create branch protection to prevent direct commits to main
+3. Automate testing as part of the Git workflow
+4. Create a global hooks configuration
+
+## Lab Structure
 
 ```
 LAB11-Git-Hooks/
-├── .git/hooks/pre-commit (created manually)
-├── sample.py
-└── README.md
+├── sample-hooks/              # Sample hook implementations
+│   ├── pre-commit             # Example pre-commit hook
+│   ├── commit-msg             # Example commit-msg hook
+│   ├── post-commit            # Example post-commit hook
+│   └── pre-push               # Example pre-push hook
+├── sample.py                  # Clean Python file for testing
+├── sample-with-errors.py      # Python file with intentional errors
+├── install-hooks.sh           # Script to install hooks
+├── exercise.md                # Step-by-step exercises
+├── solutions.md               # Detailed solutions
+└── README.md                  # Lab overview
 ```
 
----
+## Cleanup
 
-## 🚀 Getting Started
+After completing the lab:
+1. You can keep the hooks if you find them useful
+2. To disable a hook, simply remove its executable permission: `chmod -x .git/hooks/hook-name`
+3. To remove hooks entirely, delete them from the .git/hooks directory
 
-1. **Initialize a repo and add a Python file:**
-```bash
-mkdir hooks-lab
-cd hooks-lab
-git init
-echo "print('hello')" > sample.py
-git add sample.py
-git commit -m "Initial commit"
-```
+## Resources
 
-2. **Create a pre-commit hook:**
-```bash
-echo "#!/bin/bash" > .git/hooks/pre-commit
-echo "echo Running pre-commit checks..." >> .git/hooks/pre-commit
-echo "flake8 sample.py || exit 1" >> .git/hooks/pre-commit
-chmod +x .git/hooks/pre-commit
-```
-(You can replace `flake8` with `black --check` or any other command.)
-
-3. **Make a change and try to commit again:**
-```bash
-echo "print('oops')" >> sample.py
-git add sample.py
-git commit -m "Bad commit"
-```
-
-4. **Fix lint issues and commit again:**
-```bash
-flake8 sample.py  # Check output
-# Fix the issues manually, then:
-git commit -m "Fixed and committed"
-```
-
----
-
-## 🧪 Validation Checklist
-
-✅ Hook prevents bad commit  
-✅ Message from hook is printed  
-✅ File becomes committed only after passing the hook
-
----
-
-## 🧹 Cleanup
-```bash
-cd ..
-rm -rf hooks-lab
-```
-
----
-
-## 🧠 Concepts to Remember
-- Git hooks are local to the repository (not synced to remotes)
-- Useful for testing, formatting, signing, or validating commits
-- Pre-commit, post-commit, post-merge are most common
-
----
-
-## 💬 What’s Next?
-Head to [LAB12 - GitHub CLI](../LAB12-GitHub-CLI/) to script and automate GitHub from your terminal.
-
-Hook it. Check it. Automate locally. 🪝💡🧪
+- [Git Hooks Documentation](https://git-scm.com/docs/githooks)
+- [Pro Git Book: Customizing Git - Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+- [Flake8 Documentation](https://flake8.pycqa.org/) - Python linter used in examples

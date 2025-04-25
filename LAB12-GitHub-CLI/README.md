@@ -1,101 +1,77 @@
-# LAB12 - GitHub CLI (gh)
+# LAB12: GitHub CLI (gh)
 
-The GitHub CLI (`gh`) is a powerful tool for managing your GitHub repositories, issues, PRs, and workflows directly from your terminal. In this lab, you’ll get started using `gh` to automate and simplify everyday GitHub operations.
+This lab introduces the GitHub Command Line Interface (CLI), a tool that brings GitHub functionality to your terminal, allowing you to work with GitHub features locally without switching to the browser.
 
----
+## Learning Objectives
 
-## 🎯 Objectives
+- Install and configure GitHub CLI
+- Understand how to authenticate and manage GitHub from the terminal
+- Create and manage repositories using command-line tools
+- Work with issues and pull requests through CLI commands
+- Automate common GitHub workflows
+- Extend GitHub CLI with aliases and extensions
 
-By the end of this lab, you will:
-- Install and authenticate the GitHub CLI
-- Create repositories, issues, and PRs using `gh`
-- View notifications and manage projects from the CLI
-
----
-
-## 🧰 Prerequisites
+## Prerequisites
 
 - GitHub account
-- GitHub CLI installed ([Install Guide](https://cli.github.com/manual/installation))
+- Git installed and configured
+- Command-line/terminal familiarity
+- Permission to install software on your system
 
----
+## Lab Overview
 
-## 📁 Lab Structure
+GitHub CLI (`gh`) is a powerful tool that helps bridge the gap between local development and GitHub's web interface. In this lab, you'll learn to use `gh` to perform common GitHub operations without leaving your terminal, improving your workflow efficiency and enabling automation of repetitive tasks.
+
+## Lab Tasks
+
+### Part 1: Setup and Basic Commands
+
+1. Install GitHub CLI based on your operating system
+2. Authenticate with your GitHub account
+3. Explore the basic command structure and help system
+4. View your GitHub profile and repository information
+
+### Part 2: Repository Management
+
+1. Create a new GitHub repository from your terminal
+2. Clone repositories using GitHub CLI
+3. Manage repository settings and metadata
+4. Create releases for your projects
+
+### Part 3: Issues and Pull Requests
+
+1. Create and manage issues directly from your terminal
+2. Create branches and prepare changes for pull requests
+3. Submit and review pull requests
+4. Merge code with flexible options
+
+### Part 4: Advanced Features
+
+1. Create custom aliases for frequently used commands
+2. Install and use GitHub CLI extensions
+3. Access GitHub's API through the CLI
+4. Integrate GitHub CLI into scripts and workflows
+
+## Lab Structure
 
 ```
 LAB12-GitHub-CLI/
-└── README.md
+├── exercise.md              # Step-by-step exercises
+├── solutions.md             # Detailed solutions
+└── README.md                # Lab overview
 ```
 
----
+## Cleanup
 
-## 🚀 Getting Started
+After completing the lab:
+1. You can choose to delete the practice repository if it's no longer needed
+2. GitHub CLI authentication persists on your machine for future use
+3. Documentation for the commands you've learned is available via `gh help`
 
-1. **Login to GitHub via CLI:**
-```bash
-gh auth login
-```
-Choose GitHub.com, HTTPS, and authenticate via browser.
+## Resources
 
-2. **Create a new GitHub repo:**
-```bash
-gh repo create cli-lab --public --clone
-cd cli-lab
-echo "# CLI Lab" > README.md
-git add README.md
-git commit -m "Initial commit"
-git push origin main
-```
-
-3. **Create an issue:**
-```bash
-gh issue create --title "Add contribution guide" --body "Write and add CONTRIBUTING.md"
-```
-
-4. **Create a pull request (PR):**
-```bash
-git checkout -b feature/contribution-doc
-echo "Guidelines here." > CONTRIBUTING.md
-git add .
-git commit -m "Add CONTRIBUTING.md"
-git push origin feature/contribution-doc
-gh pr create --fill
-```
-
-5. **View and manage with `gh`**
-```bash
-gh issue list
-gh pr list
-gh repo view --web
-```
-
----
-
-## 🧪 Validation Checklist
-
-✅ Authenticated with GitHub CLI  
-✅ Created repo, issue, and PR using `gh`  
-✅ Viewed issues and PRs from terminal
-
----
-
-## 🧹 Cleanup
-```bash
-cd ..
-rm -rf cli-lab
-```
-Optionally delete the repo on GitHub.
-
----
-
-## 🧠 Concepts to Remember
-- `gh` helps reduce context switching between browser and terminal
-- You can script issue tracking, PR reviews, and repo management
-
----
-
-## 💬 What’s Next?
-Proceed to [LAB13 - Workflow Templates](../LAB13-Workflow-Templates/) to reuse GitHub Actions across projects.
-
-Type less. Automate more. 🚀📟🐙
+- [GitHub CLI Official Documentation](https://cli.github.com/manual/)
+- [GitHub CLI Repository](https://github.com/cli/cli)
+- [GitHub CLI Extensions](https://github.com/topics/gh-extension)
+- [GitHub REST API Documentation](https://docs.github.com/en/rest)
 

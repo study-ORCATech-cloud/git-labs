@@ -26,6 +26,8 @@ By the end of this lab, you will:
 ```
 LAB07-Branches-And-Pull-Requests/
 ├── README.md
+├── exercise.md
+├── solutions.md
 └── (cloned GitHub repo with multiple branches)
 ```
 
@@ -33,28 +35,37 @@ LAB07-Branches-And-Pull-Requests/
 
 ## 🚀 Getting Started
 
-1. **Clone or navigate to your GitHub repo:**
+1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about branches and pull requests.
+
+2. Complete each task in the exercise at your own pace.
+
+3. If you get stuck, refer to the examples below or check the `solutions.md` file for guidance.
+
+### Example: Clone or navigate to your GitHub repo
+
 ```bash
 git clone https://github.com/your-username/feature-lab.git
 cd feature-lab
 ```
 
-2. **Create and switch to a new feature branch:**
+### Example: Create and switch to a new feature branch
+
 ```bash
 git checkout -b update-readme
 echo "## More notes" >> README.md
 git commit -am "Add section to README"
 ```
 
-3. **Push the branch to GitHub:**
+### Example: Push the branch to GitHub
+
 ```bash
 git push origin update-readme
 ```
 
-4. **Open a pull request on GitHub:**
+### Example: Open a pull request on GitHub
 Go to the GitHub repo → "Compare & pull request" → Add message → Submit
 
-5. **Merge the PR using GitHub UI:**
+### Example: Merge the PR using GitHub UI
 - Approve and merge
 - Optionally delete the `update-readme` branch after merge
 
@@ -85,7 +96,7 @@ And delete the repository on GitHub if desired.
 
 ---
 
-## 💬 What’s Next?
+## 💬 What's Next?
 Advance to [LAB08 - Forks and Upstream](../LAB08-Forks-And-Upstream/) to contribute to external projects using forks and upstream remotes.
 
 Push features. Merge cleanly. Collaborate confidently. 🌿🔃📦

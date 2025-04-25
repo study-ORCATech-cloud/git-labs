@@ -1,96 +1,74 @@
-# LAB10 - GitHub Actions Basics
+# LAB10: GitHub Actions Basics
 
-In this lab, you'll explore GitHub Actions — GitHub’s built-in CI/CD automation platform. Learn how to create a basic workflow that runs automatically when code is pushed.
+This lab introduces GitHub Actions, GitHub's integrated CI/CD platform that enables automation directly within your GitHub repository.
 
----
+## Learning Objectives
 
-## 🎯 Objectives
+- Understand GitHub Actions core concepts (workflows, jobs, steps)
+- Create and configure workflow files in YAML format
+- Trigger workflows based on GitHub events
+- Use actions from the GitHub Marketplace
+- Work with environment variables and contexts
+- Implement conditional execution and matrix builds
+- Monitor and troubleshoot workflow runs
 
-By the end of this lab, you will:
-- Understand the purpose of GitHub Actions
-- Create a basic workflow that runs on `push`
-- Run a job that echoes messages and tests code
-- View workflow results in the Actions tab
+## Prerequisites
 
----
+- GitHub account
+- Basic knowledge of YAML syntax
+- Understanding of Git operations (push, pull, branch)
+- Basic Python knowledge
 
-## 🧰 Prerequisites
+## Lab Overview
 
-- GitHub repository (public or private)
-- Basic YAML knowledge
-- A file to work with (e.g., `main.py`)
+GitHub Actions allows you to automate your software development workflows directly in your GitHub repository. In this lab, you'll create a basic workflow that runs automatically when code is pushed, set up Python, and execute a simple script. You'll learn how to view workflow results and troubleshoot issues.
 
----
+## Lab Tasks
 
-## 📁 Lab Structure
+### Part 1: Creating a Basic Workflow
+
+1. Create a GitHub Actions workflow file structure
+2. Define a basic workflow that runs on push events
+3. Add steps to check out code and run commands
+4. Trigger the workflow by pushing changes
+
+### Part 2: Working with Python in GitHub Actions
+
+1. Create a simple Python script
+2. Configure the workflow to run your Python code
+3. Pass environment variables to your script
+4. Install and use Python packages
+
+### Part 3: Advanced Workflow Features
+
+1. Create conditional steps based on branch names
+2. Set up a matrix build to test on multiple Python versions
+3. Create a scheduled workflow that runs automatically
+4. Review and analyze workflow run results
+
+## Lab Structure
 
 ```
 LAB10-GitHub-Actions-Basics/
-├── .github/workflows/main.yml
-├── main.py
-└── README.md
+├── .github/workflows/
+│   ├── main.yml              # Main workflow file
+│   └── scheduled.yml         # Scheduled workflow file (bonus)
+├── main.py                   # Sample Python script
+├── exercise.md               # Step-by-step exercises
+├── solutions.md              # Detailed solutions
+└── README.md                 # Lab overview
 ```
 
----
+## Cleanup
 
-## 🚀 Getting Started
+After completing the lab:
+1. You can keep your workflows active if desired
+2. To disable workflows: Go to Actions tab → select workflow → click "Disable workflow"
+3. Or delete the workflow files from your repository
 
-1. **Create the following folder structure in your repo:**
-```bash
-mkdir -p .github/workflows
-```
+## Resources
 
-2. **Create a file named `.github/workflows/main.yml` with this content:**
-```yaml
-name: Basic Workflow
-
-on: [push]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Echo greeting
-        run: echo "Hello from GitHub Actions!"
-
-      - name: Run Python script
-        run: python main.py
-```
-
-3. **Create a `main.py` file that prints something:**
-```python
-print("This is an automated test from GitHub Actions!")
-```
-
-4. **Push to GitHub and check the Actions tab.**
-
----
-
-## 🧪 Validation Checklist
-
-✅ Workflow file created under `.github/workflows/`  
-✅ Workflow triggered on `git push`  
-✅ All steps executed successfully  
-✅ Output visible in GitHub Actions tab
-
----
-
-## 🧹 Cleanup
-- You can disable the workflow or delete the `.github/workflows` folder if needed.
-
----
-
-## 🧠 Concepts to Remember
-- GitHub Actions workflows are written in **YAML**
-- Jobs run in parallel by default
-- You can add matrix builds, secrets, and environment conditions later
-
----
-
-## 💬 What’s Next?
-Next: [LAB11 - Git Hooks](../LAB11-Git-Hooks/) to explore local Git automation for pre-commit, post-merge, and more.
-
-Automate like a DevOps pro! 🤖🚀📦
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [GitHub Marketplace for Actions](https://github.com/marketplace?type=actions)
+- [Workflow Syntax Reference](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
+- [Context and Expression Syntax](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions)

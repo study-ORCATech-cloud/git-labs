@@ -27,6 +27,8 @@ By the end of this lab, you will:
 LAB01-Initialize-Git-And-Gitignore/
 ├── .gitignore
 ├── example.py
+├── exercise.md
+├── solutions.md
 └── README.md
 ```
 
@@ -34,37 +36,44 @@ LAB01-Initialize-Git-And-Gitignore/
 
 ## 🚀 Getting Started
 
-1. **Create a new project folder:**
+1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn Git initialization and .gitignore setup.
+
+2. Complete each task in the exercise at your own pace.
+
+3. If you get stuck, refer to the examples below or check the `solutions.md` file for guidance.
+
+### Example: Initialize Git repository
+
 ```bash
 mkdir my-git-lab
 cd my-git-lab
-```
-
-2. **Initialize Git repository:**
-```bash
 git init
 ```
 You will now see a `.git/` directory created. This is your local repository.
 
-3. **Create a sample file:**
+### Example: Create a sample file
+
 ```bash
 echo "print('Hello, Git!')" > example.py
 ```
 
-4. **Create a `.gitignore` file:**
+### Example: Create a `.gitignore` file
+
 ```bash
 echo "__pycache__/" >> .gitignore
 echo "*.log" >> .gitignore
 ```
 This ensures ignored files won't be tracked by Git.
 
-5. **Check status and add files:**
+### Example: Check status and add files
+
 ```bash
 git status
 git add .
 ```
 
-6. **Commit your changes:**
+### Example: Commit your changes
+
 ```bash
 git commit -m "Initial commit with example.py and .gitignore"
 ```
@@ -96,7 +105,7 @@ rm -rf my-git-lab
 
 ---
 
-## 💬 What’s Next?
+## 💬 What's Next?
 Move on to [LAB02 - Commit and History](../LAB02-Commit-And-History/) to explore Git logs, diffs, and history navigation.
 
 Happy tracking! 🧠📁🧾

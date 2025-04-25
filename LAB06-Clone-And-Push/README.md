@@ -1,6 +1,6 @@
 # LAB06 - Clone & Push
 
-This lab teaches you how to work with remote repositories by cloning them and pushing changes back to GitHub or other Git servers. It’s your first hands-on step into remote collaboration.
+This lab teaches you how to work with remote repositories by cloning them and pushing changes back to GitHub or other Git servers. It's your first hands-on step into remote collaboration.
 
 ---
 
@@ -26,6 +26,8 @@ By the end of this lab, you will:
 ```
 LAB06-Clone-And-Push/
 ├── hello.md
+├── exercise.md
+├── solutions.md
 └── README.md
 ```
 
@@ -33,30 +35,41 @@ LAB06-Clone-And-Push/
 
 ## 🚀 Getting Started
 
-1. **Create a new GitHub repository (manually or using GitHub CLI):**
+1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about remote repositories.
+
+2. Complete each task in the exercise at your own pace.
+
+3. If you get stuck, refer to the examples below or check the `solutions.md` file for guidance.
+
+### Example: Create a new GitHub repository
+
 ```bash
 gh repo create my-remote-lab --public --clone
 cd my-remote-lab
 ```
 
-2. **Create a file and commit it:**
+### Example: Create a file and commit it
+
 ```bash
 echo "# Hello GitHub" > hello.md
 git add hello.md
 git commit -m "Initial commit"
 ```
 
-3. **Push your commit to GitHub:**
+### Example: Push your commit to GitHub
+
 ```bash
 git push origin main
 ```
 
-4. **View remote URL and remotes:**
+### Example: View remote URL and remotes
+
 ```bash
 git remote -v
 ```
 
-5. **Clone the repo to a second location (optional):**
+### Example: Clone the repo to a second location
+
 ```bash
 cd ..
 git clone https://github.com/your-username/my-remote-lab.git cloned-lab
@@ -87,7 +100,7 @@ And optionally delete the GitHub repo.
 
 ---
 
-## 💬 What’s Next?
+## 💬 What's Next?
 Continue to [LAB07 - Branches and Pull Requests](../LAB07-Branches-And-Pull-Requests/) to collaborate with others via GitHub PRs.
 
 Clone it. Push it. Share it. 🌍📤💻

@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Sample pre-push hook for Git
+# This script runs before code is pushed to a remote repository
+#
+# To install: Copy to .git/hooks/pre-push and make executable (chmod +x)
+
+echo "==============================================="
+echo "Running pre-push hook"
+echo "==============================================="
+
+# Get the remote and branch being pushed to
+remote="$1"
+url="$2"
+
+echo "Pushing to remote: $remote ($url)"
+
+# Run tests on all Python files
+echo "Running tests on all Python files..."
+
+# Find all Python files in the repository
+files=$(find . -name "*.py" | grep -v "__pycache__" | grep -v ".git")
+
+# Check if there are any Python files to test
+if [ -z "$files" ]; then
+    echo "No Python files found to test."
+    exit 0
+fi
+
+# Check for syntax errors
+for file in $files; do
+    echo "Checking syntax in $file..."
+    python -m py_compile "$file"
+    if [ $? -ne 0 ]; then
+        echo "❌ Error: Python syntax error in $file"
+        echo "Push aborted. Fix the syntax error before pushing."
+        exit 1
+    fi
+done
+
+echo "✅ All Python files passed syntax check."
+
+# Run automated tests if they exist
+if [ -f "pytest.ini" ] || [ -f "setup.py" ] || [ -d "tests" ]; then
+    if command -v pytest > /dev/null; then
+        echo "Running pytest..."
+        pytest -xvs
+        if [ $? -ne 0 ]; then
+            echo "❌ Tests failed! Push aborted."
+            exit 1
+        fi
+        echo "✅ All tests passed!"
+    else
+        echo "⚠️ pytest not found. Skipping test execution."
+    fi
+elif [ -f "package.json" ]; then
+    if command -v npm > /dev/null; then
+        echo "Running npm tests..."
+        npm test
+        if [ $? -ne 0 ]; then
+            echo "❌ Tests failed! Push aborted."
+            exit 1
+        fi
+        echo "✅ All tests passed!"
+    else
+        echo "⚠️ npm not found. Skipping test execution."
+    fi
+else
+    echo "No test configuration found. Skipping test execution."
+fi
+
+echo "==============================================="
+echo "Pre-push checks completed successfully!"
+echo "Proceeding with push..."
+echo "==============================================="
+
+exit 0 

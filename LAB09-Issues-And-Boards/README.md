@@ -1,81 +1,72 @@
-# LAB09 - Issues & Project Boards
+# LAB09: GitHub Issues and Project Boards
 
-In this lab, you'll use GitHub Issues and Project Boards to track work, plan features, and manage collaboration. These tools are essential for organizing any DevOps or open-source workflow.
+This lab introduces GitHub Issues and Project Boards as powerful tools for project management and collaboration.
 
----
+## Learning Objectives
 
-## 🎯 Objectives
+- Understand GitHub Issues fundamentals
+- Learn how to create and manage issues effectively
+- Set up and organize a GitHub Project Board
+- Link issues to project boards
+- Practice using labels, milestones, and assignees
+- Understand issue templates and their benefits
 
-By the end of this lab, you will:
-- Create GitHub issues to represent bugs, tasks, or ideas
-- Add labels, assignees, and milestones to issues
-- Set up a GitHub Project board (Kanban-style)
-- Move issues across project board columns
+## Prerequisites
 
----
+- GitHub account
+- Basic Git knowledge (committing, pushing, branching)
+- Completion of previous labs (especially LAB06-LAB08)
 
-## 🧰 Prerequisites
+## Lab Overview
 
-- GitHub account and a repository (public or private)
-- Basic GitHub familiarity
+In this lab, you'll work with a sample repository to practice using GitHub Issues and Project Boards for tracking and managing work. You'll create issues, organize them on a project board, and learn how these tools can help streamline development workflows.
 
----
+## Lab Tasks
 
-## 📁 Lab Structure
+### Part 1: GitHub Issues
 
-```
-LAB09-Issues-And-Boards/
-└── README.md
-```
+1. Navigate to the sample repository
+2. Create different types of issues:
+   - Bug report
+   - Feature request
+   - Documentation improvement
+3. Practice with issue elements:
+   - Add appropriate labels
+   - Assign issues to yourself
+   - Set milestone(s)
+   - Add descriptive comments
+4. Close an issue with a commit message (using keywords)
+5. Reference issues in pull requests
 
----
+### Part 2: GitHub Project Boards
 
-## 🚀 Getting Started
+1. Create a new project board
+2. Set up columns (To do, In progress, Done)
+3. Add automation to columns
+4. Add existing issues to the board
+5. Create new issues directly from the board
+6. Practice moving issues between columns
+7. Add notes to the project board
 
-1. **Navigate to your GitHub repository.**
-2. **Click on the 'Issues' tab.**
-   - Create a few example issues:
-     - "Fix typo in README"
-     - "Add new feature: email notification"
-     - "Refactor login function"
+### Part 3: Issue Templates
 
-3. **Add metadata to issues:**
-   - Labels (e.g. `bug`, `enhancement`, `help wanted`)
-   - Assignees (you or a teammate)
-   - Milestone (e.g., `v1.0 Release`)
+1. Examine the provided issue templates
+2. Understand the structure and purpose of templates
+3. Create a new issue using a template
+4. Create a custom issue template (optional)
 
-4. **Click the 'Projects' tab → New Project**
-   - Choose a Kanban template or custom board
-   - Add columns like `To Do`, `In Progress`, `Done`
+## TODO Items
 
-5. **Add issues to the project board**
-   - Drag issues across columns to simulate workflow progress
+Throughout this lab, you'll see TODO markers indicating tasks you need to complete. Make sure to address all of these tasks to fully complete the lab.
 
----
+## Cleanup
 
-## 🧪 Validation Checklist
+After completing the lab:
+1. You can keep your issues and project board for reference
+2. If you want to clean up, you can delete the project board and close any remaining open issues
 
-✅ Created multiple GitHub issues  
-✅ Assigned labels, assignees, and milestones  
-✅ Created a Project board and added issues to it  
-✅ Moved issues between columns
+## Resources
 
----
-
-## 🧹 Cleanup
-- Optionally close issues and delete the project board
-
----
-
-## 🧠 Concepts to Remember
-- Issues = individual tasks or bugs
-- Labels/milestones help with filtering and planning
-- Project boards = Kanban-style task tracking
-- Boards can be shared across repositories or teams
-
----
-
-## 💬 What’s Next?
-Continue to [LAB10 - GitHub Actions Basics](../LAB10-GitHub-Actions-Basics/) to begin automating workflows using GitHub CI/CD.
-
-Organize. Prioritize. Visualize. ✅📋📊
+- [GitHub Issues Documentation](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [GitHub Project Boards Documentation](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
+- [Issue Templates Documentation](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates)

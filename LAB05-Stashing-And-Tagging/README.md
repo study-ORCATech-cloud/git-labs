@@ -26,6 +26,8 @@ By the end of this lab, you will:
 ```
 LAB05-Stashing-And-Tagging/
 ├── feature.py
+├── exercise.md
+├── solutions.md
 └── README.md
 ```
 
@@ -33,7 +35,14 @@ LAB05-Stashing-And-Tagging/
 
 ## 🚀 Getting Started
 
-1. **Setup a new repo and commit base file:**
+1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about Git stashing and tagging.
+
+2. Complete each task in the exercise at your own pace.
+
+3. If you get stuck, refer to the examples below or check the `solutions.md` file for guidance.
+
+### Example: Setup a new repo and commit base file
+
 ```bash
 mkdir stash-tag-lab
 cd stash-tag-lab
@@ -43,23 +52,27 @@ git add feature.py
 git commit -m "Initial commit"
 ```
 
-2. **Make changes but don’t commit yet:**
+### Example: Make changes but don't commit yet
+
 ```bash
 echo "print('in-progress feature')" >> feature.py
 ```
 
-3. **Stash the changes:**
+### Example: Stash the changes
+
 ```bash
 git stash
 ```
 This removes your working changes and saves them in a temporary stack.
 
-4. **Apply the stash back:**
+### Example: Apply the stash back
+
 ```bash
 git stash apply
 ```
 
-5. **Drop the stash:**
+### Example: Drop the stash
+
 ```bash
 git stash drop
 ```
@@ -68,23 +81,27 @@ git stash drop
 
 ## 🏷️ Tagging Commits
 
-1. **Create a versioned tag on current commit:**
+### Example: Create a versioned tag on current commit
+
 ```bash
 git tag v1.0.0
 ```
 
-2. **Create an annotated tag:**
+### Example: Create an annotated tag
+
 ```bash
 git tag -a v1.0.1 -m "Stable version with hotfix"
 ```
 
-3. **List and show tags:**
+### Example: List and show tags
+
 ```bash
 git tag
 git show v1.0.1
 ```
 
-4. **Checkout a tag (detached HEAD):**
+### Example: Checkout a tag (detached HEAD)
+
 ```bash
 git checkout v1.0.0
 ```
@@ -114,7 +131,7 @@ rm -rf stash-tag-lab
 
 ---
 
-## 💬 What’s Next?
+## 💬 What's Next?
 Move on to [LAB06 - Clone and Push](../LAB06-Clone-And-Push/) to interact with remote repositories.
 
 Save it. Tag it. Move fast. 🧳🏷️🔁

@@ -1,87 +1,70 @@
-# LAB14 - GitHub Tokens & Secrets
+# LAB14: GitHub Tokens & Secrets
 
-In this lab, you'll learn how to securely manage credentials and sensitive data in GitHub workflows using encrypted secrets and GitHub-provided tokens.
+This lab teaches you how to securely manage credentials and sensitive data in GitHub workflows using encrypted secrets and GitHub-provided tokens.
 
----
+## Learning Objectives
 
-## 🎯 Objectives
+- Understand the purpose and use of GitHub's `GITHUB_TOKEN`
+- Create and store encrypted secrets in repository settings
+- Access and use secrets securely within GitHub Actions workflows
+- Implement best practices for credential management in CI/CD pipelines
+- Understand different scopes and permissions for GitHub tokens
 
-By the end of this lab, you will:
-- Understand the use of GitHub’s `GITHUB_TOKEN`
-- Store secrets in your repository settings
-- Access secrets within GitHub Actions workflows
-- Use secrets to authenticate securely in jobs
+## Prerequisites
 
----
+- GitHub account
+- Repository with GitHub Actions enabled
+- Basic understanding of GitHub Actions workflows (from previous labs)
 
-## 🧰 Prerequisites
+## Lab Overview
 
-- GitHub repository with Actions enabled
-- Basic familiarity with GitHub Actions and YAML syntax
+Secure authentication is essential for CI/CD pipelines that interact with external services or protected resources. GitHub provides a robust secrets management system that keeps sensitive information encrypted while making it accessible to authorized workflows. In this lab, you'll learn how to create, store, and use secrets securely in your automation workflows.
 
----
+## Lab Tasks
 
-## 📁 Lab Structure
+### Part 1: Understanding GitHub Tokens
+
+1. Explore the automatic GITHUB_TOKEN
+2. Review token permissions and scopes
+3. Use the token for authenticated GitHub operations
+4. Understand token security limitations
+
+### Part 2: Repository Secrets
+
+1. Create repository-level secrets
+2. Access secrets in workflow files
+3. Pass secrets to actions safely
+4. Implement best practices for secret handling
+
+### Part 3: Advanced Secret Management
+
+1. Work with organization-level secrets
+2. Create environment-specific secrets
+3. Implement secret rotation practices
+4. Secure secrets in fork and pull request workflows
+
+## Lab Structure
 
 ```
 LAB14-Tokens-And-Secrets/
-├── .github/workflows/use-secrets.yml
-└── README.md
+├── .github/workflows/
+│   ├── use-secrets.yml                # Workflow demonstrating secret usage
+│   └── github-token.yml               # Workflow demonstrating GITHUB_TOKEN
+├── exercise.md                        # Step-by-step exercises
+├── solutions.md                       # Detailed solutions
+└── README.md                          # Lab overview
 ```
 
----
+## Cleanup
 
-## 🚀 Getting Started
+After completing the lab:
+1. Delete any test secrets from your repository settings
+2. Remove any workflow files that might expose secret handling patterns
+3. Cancel any running workflow jobs that might be using secrets
 
-1. **Add a new secret to your repository:**
-   - Go to: GitHub → Your Repo → Settings → Secrets → Actions → "New repository secret"
-   - Name: `MY_SECRET_TOKEN`
-   - Value: `super-secret-value`
+## Resources
 
-2. **Create a workflow file to use the secret:**
-```yaml
-# .github/workflows/use-secrets.yml
-name: Secure Workflow
-on: [push]
-
-jobs:
-  show-secret:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Access Secret
-        run: echo "Using secret token: ${{ secrets.MY_SECRET_TOKEN }}"
-        env:
-          SECRET_VAR: ${{ secrets.MY_SECRET_TOKEN }}
-```
-> Note: Never log secrets in real-world projects. This echo is for demonstration only.
-
-3. **Push your changes to trigger the workflow.**
-
----
-
-## 🧪 Validation Checklist
-
-✅ Secret created under repo settings  
-✅ Accessed via `secrets.*` in the workflow  
-✅ Secret passed to a job and available via `env`
-
----
-
-## 🧹 Cleanup
-- Delete test secrets from your repository after testing
-- Remove or comment out sensitive output from workflow logs
-
----
-
-## 🧠 Concepts to Remember
-- Secrets are encrypted and never visible in logs (unless printed manually)
-- `GITHUB_TOKEN` is auto-generated for each workflow run
-- Use secrets to securely pass API tokens, credentials, etc.
-
----
-
-## 💬 What’s Next?
-Finish the series with [LAB15 - GitHub API with Python](../LAB15-GitHub-API-With-Python/) to programmatically interact with GitHub using authenticated requests.
-
-Secure your automation. Vault it right. 🔐💡📦
+- [GitHub Secrets Documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+- [Automatic Token Authentication](https://docs.github.com/en/actions/security-guides/automatic-token-authentication)
+- [GitHub Token Permissions](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
 

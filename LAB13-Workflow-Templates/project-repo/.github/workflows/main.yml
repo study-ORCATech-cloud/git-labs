@@ -1,0 +1,12 @@
+name: Use Template
+
+# TODO: Add the trigger for this workflow (it should run on push events)
+on:
+  # Add your trigger here
+
+jobs:
+  # TODO: Create a job that calls the reusable workflow from the template repository
+  # Hint: Use the 'uses' keyword with your GitHub username
+  # Format: username/repo-name/.github/workflows/workflow-filename.yml@branch
+  
+  # If you implemented input parameters in the template, you can pass values to them using 'with:' 

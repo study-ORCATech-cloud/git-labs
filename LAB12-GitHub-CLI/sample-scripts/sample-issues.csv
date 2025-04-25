@@ -1,0 +1,7 @@
+Title,Body,Labels,Assignee,Milestone
+Add authentication feature,We need to implement user authentication with email and password,enhancement;feature,,,
+Fix responsive design on mobile,The navigation menu doesn't display correctly on mobile devices,bug;ui,,v1.0
+Update documentation,The installation guide needs to be updated with new dependencies,documentation,,
+Implement dark mode,Add a dark mode theme option for better user experience,enhancement;ui,,v2.0
+Security vulnerability in login,There's a potential security issue in the login form validation,bug;security;high-priority,,
+Optimize database queries,The database queries are slow and need optimization,performance;backend,,v1.0 

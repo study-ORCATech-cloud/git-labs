@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Sample post-commit hook for Git
+# This script runs after a commit has been created and displays information
+#
+# To install: Copy to .git/hooks/post-commit and make executable (chmod +x)
+
+echo "==============================================="
+echo "Running post-commit hook"
+echo "==============================================="
+
+# Get information about the commit
+commit_hash=$(git rev-parse HEAD)
+commit_short_hash=$(git rev-parse --short HEAD)
+commit_author=$(git log -1 --format="%an <%ae>")
+commit_date=$(git log -1 --format="%ad" --date=local)
+commit_message=$(git log -1 --format="%s")
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Display commit summary
+echo "✅ Commit completed successfully!"
+echo ""
+echo "Commit Information:"
+echo "  Hash:      $commit_hash"
+echo "  Short Hash: $commit_short_hash"
+echo "  Author:    $commit_author"
+echo "  Date:      $commit_date"
+echo "  Branch:    $branch"
+echo "  Message:   $commit_message"
+echo ""
+
+# Display repository statistics
+total_commits=$(git rev-list --count HEAD)
+echo "Repository Statistics:"
+echo "  Total commits: $total_commits"
+echo "  Files changed in this commit: $(git show --pretty="" --name-only | wc -l)"
+echo ""
+
+# Optionally notify about next steps
+echo "Next Steps:"
+echo "  Run tests: 'npm test' or 'pytest'"
+echo "  Push changes: 'git push origin $branch'"
+echo "==============================================="
+
+# Example: Automatically run tests
+# npm test
+# If you want to run tests automatically, uncomment the line above
+
+exit 0 

@@ -1,0 +1,15 @@
+name: GitHub Token Demo
+
+# TODO: Configure this workflow to trigger on push events
+on:
+  # Add your trigger configuration here
+
+jobs:
+  repo-info:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Add a step to get basic repository information
+      # Hint: Use github context variables like github.repository
+      
+      # TODO: Use the GITHUB_TOKEN to make an authenticated GitHub API request
+      # Hint: Use curl with Authorization header to call the GitHub API 

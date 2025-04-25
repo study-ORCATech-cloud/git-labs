@@ -1,0 +1,40 @@
+name: Basic GitHub Actions Demo
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GREETING: "Hello from GitHub Actions workflow!"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Welcome message
+        run: |
+          echo "===========================================" 
+          echo "Starting GitHub Actions workflow execution"
+          echo "This workflow was triggered by a ${{ github.event_name }} event"
+          echo "===========================================" 
+      
+      - name: List repository files
+        run: ls -la
+        
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+          
+      - name: Display Python version
+        run: python --version
+      
+      - name: Run Python script
+        run: python main.py
+        env:
+          GREETING: "Custom greeting from the workflow step!" 

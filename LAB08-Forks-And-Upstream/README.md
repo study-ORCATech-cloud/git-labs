@@ -26,6 +26,8 @@ By the end of this lab, you will:
 ```
 LAB08-Forks-And-Upstream/
 ├── CONTRIBUTING.md (sample file to edit)
+├── exercise.md
+├── solutions.md
 └── README.md
 ```
 
@@ -33,29 +35,40 @@ LAB08-Forks-And-Upstream/
 
 ## 🚀 Getting Started
 
-1. **Fork a public GitHub repository:**
+1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about forks and upstream syncing.
+
+2. Complete each task in the exercise at your own pace.
+
+3. If you get stuck, refer to the examples below or check the `solutions.md` file for guidance.
+
+### Example: Fork a public GitHub repository
+
 Go to https://github.com/some-org/demo-project → Click **Fork**
 
-2. **Clone your fork locally:**
+### Example: Clone your fork locally
+
 ```bash
 git clone https://github.com/your-username/demo-project.git
 cd demo-project
 ```
 
-3. **Add the original repo as an upstream remote:**
+### Example: Add the original repo as an upstream remote
+
 ```bash
 git remote add upstream https://github.com/some-org/demo-project.git
 git remote -v
 ```
 
-4. **Make changes to a file:**
+### Example: Make changes to a file
+
 ```bash
 echo "Contributor: @your-username" >> CONTRIBUTING.md
 git commit -am "Add contributor info"
 git push origin main
 ```
 
-5. **Sync your fork with upstream:**
+### Example: Sync your fork with upstream
+
 ```bash
 git fetch upstream
 git merge upstream/main
@@ -86,13 +99,13 @@ Delete your fork from GitHub if no longer needed.
 ---
 
 ## 🧠 Concepts to Remember
-- Forks are used to contribute to repositories you don’t own
+- Forks are used to contribute to repositories you don't own
 - `upstream` tracks the original project
 - Keep your fork updated to avoid merge conflicts
 
 ---
 
-## 💬 What’s Next?
+## 💬 What's Next?
 Move on to [LAB09 - Issues and Project Boards](../LAB09-Issues-And-Boards/) to manage issues and plan your work.
 
 Fork it. Sync it. Contribute wisely. 🍴🔄🌐

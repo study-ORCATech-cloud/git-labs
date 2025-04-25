@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Sample pre-commit hook for Git
+# This script runs before a commit is created and validates Python code
+#
+# To install: Copy to .git/hooks/pre-commit and make executable (chmod +x)
+
+echo "==============================================="
+echo "Running pre-commit hook. Checking your changes..."
+echo "==============================================="
+
+# Get current branch name
+branch=$(git symbolic-ref --short HEAD)
+
+# Check if we're on the main/master branch
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+    echo "⚠️ Warning: You are about to commit directly to the $branch branch."
+    echo "   Consider creating a feature branch instead."
+    # Uncomment next two lines to block direct commits to main/master
+    # echo "❌ Error: Direct commits to the $branch branch are not allowed!"
+    # exit 1
+fi
+
+# Find all staged Python files
+files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$')
+
+if [ -n "$files" ]; then
+    echo "Checking Python files for issues..."
+    
+    # Check for Python syntax errors
+    for file in $files; do
+        echo "Checking syntax: $file"
+        python -m py_compile "$file"
+        if [ $? -ne 0 ]; then
+            echo "❌ Python syntax error in $file"
+            exit 1
+        fi
+    done
+    
+    # Check for trailing whitespace and debugging statements
+    for file in $files; do
+        # Check for trailing whitespace
+        if grep -q "[[:blank:]]$" "$file"; then
+            echo "❌ Error: $file contains trailing whitespace"
+            grep -n "[[:blank:]]$" "$file"
+            exit 1
+        fi
+        
+        # Check for debugging print statements
+        if grep -q "print.*DEBUG\|print.*REMOVE\|import pdb\|pdb\.set_trace\|breakpoint()" "$file"; then
+            echo "❌ Error: $file contains debugging statements"
+            grep -n "print.*DEBUG\|print.*REMOVE\|import pdb\|pdb\.set_trace\|breakpoint()" "$file"
+            exit 1
+        fi
+    done
+    
+    # If you have flake8 installed, uncomment these lines
+    # echo "Running flake8 on Python files..."
+    # which flake8 >/dev/null 2>&1
+    # if [ $? -eq 0 ]; then
+    #     echo "$files" | xargs flake8
+    #     if [ $? -ne 0 ]; then
+    #         echo "❌ Flake8 found issues. Fix before committing."
+    #         exit 1
+    #     fi
+    # else
+    #     echo "⚠️ flake8 not installed. Skipping linting checks."
+    # fi
+    
+    echo "✅ All Python checks passed!"
+else
+    echo "No Python files to check."
+fi
+
+echo "Pre-commit hook completed successfully!"
+echo "Proceeding with commit..."
+exit 0 

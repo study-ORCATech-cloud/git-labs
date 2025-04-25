@@ -1,0 +1,42 @@
+name: Scheduled GitHub Actions Demo
+
+on:
+  schedule:
+    # Run at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  # Allow manual triggering for testing
+  workflow_dispatch:
+
+jobs:
+  scheduled-job:
+    runs-on: ubuntu-latest
+    env:
+      GREETING: "Hello from scheduled GitHub Actions workflow!"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Display scheduled run information
+        run: |
+          echo "===========================================" 
+          echo "Running scheduled GitHub Actions workflow"
+          echo "Current date: $(date)"
+          echo "This job runs daily at midnight UTC"
+          echo "===========================================" 
+      
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      
+      - name: Run Python script
+        run: python main.py
+        env:
+          GREETING: "Greeting from scheduled workflow!"
+          
+      - name: Generate daily report
+        run: |
+          echo "Daily report generated on $(date)" > daily_report.txt
+          echo "GitHub Actions scheduled workflow completed successfully" >> daily_report.txt
+          cat daily_report.txt 

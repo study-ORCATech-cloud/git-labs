@@ -1,0 +1,15 @@
+name: CI Template
+
+# TODO: Define the correct trigger for a reusable workflow
+on:
+  # Add your reusable workflow trigger here
+
+# TODO: Define input parameters for your workflow (optional for basic version)
+# Hint: Use the 'inputs' keyword to define parameters
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Add a step that outputs a welcome message
+      # Hint: Use the 'run' keyword with an echo command 

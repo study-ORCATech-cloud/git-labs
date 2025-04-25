@@ -26,6 +26,8 @@ By the end of this lab, you will:
 ```
 LAB03-Branching-Basics/
 ├── main.py
+├── exercise.md
+├── solutions.md
 └── README.md
 ```
 
@@ -33,7 +35,14 @@ LAB03-Branching-Basics/
 
 ## 🚀 Getting Started
 
-1. **Initialize the repo and commit your base file:**
+1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about Git branching and merging.
+
+2. Complete each task in the exercise at your own pace.
+
+3. If you get stuck, refer to the examples below or check the `solutions.md` file for guidance.
+
+### Example: Initialize the repo and commit your base file
+
 ```bash
 mkdir branching-lab
 cd branching-lab
@@ -43,21 +52,24 @@ git add main.py
 git commit -m "Initial commit on main"
 ```
 
-2. **Create a new branch:**
+### Example: Create a new branch
+
 ```bash
 git checkout -b feature-1
 echo "print('feature 1')" > main.py
 git commit -am "Update from feature-1"
 ```
 
-3. **Switch back to `main` and make another change:**
+### Example: Switch back to `main` and make another change
+
 ```bash
 git checkout main
 echo "print('main branch again')" > main.py
 git commit -am "Main branch change"
 ```
 
-4. **Merge the feature branch:**
+### Example: Merge the feature branch
+
 ```bash
 git merge feature-1
 ```
@@ -90,7 +102,7 @@ rm -rf branching-lab
 
 ---
 
-## 💬 What’s Next?
+## 💬 What's Next?
 Continue to [LAB04 - Reset vs Revert](../LAB04-Reset-Vs-Revert/) to learn how to undo changes safely.
 
 Stay in your lane — branch it out! 🌿🔁🛠️
