@@ -55,7 +55,7 @@ LAB11-Git-Hooks/
 ├── sample.py                  # Clean Python file for testing
 ├── sample-with-errors.py      # Python file with intentional errors
 ├── install-hooks.sh           # Script to install hooks
-├── exercise.md                # Step-by-step exercises
+├── LAB.md                # Step-by-step exercises
 ├── solutions.md               # Detailed solutions
 └── README.md                  # Lab overview
 ```

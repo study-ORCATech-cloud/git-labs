@@ -52,7 +52,7 @@ LAB15-GitHub-API-With-Python/
 │   ├── github_repos.py              # Script to list repositories
 │   ├── github_issues.py             # Script to manage issues
 │   └── github_advanced.py           # Script for advanced features
-├── exercise.md                      # Step-by-step exercises
+├── LAB.md                      # Step-by-step exercises
 ├── requirements.txt                 # Python dependencies
 ├── solutions.md                     # Detailed solutions
 └── README.md                        # Lab overview

@@ -54,7 +54,7 @@ LAB10-GitHub-Actions-Basics/
 │   ├── main.yml              # Main workflow file
 │   └── scheduled.yml         # Scheduled workflow file (bonus)
 ├── main.py                   # Sample Python script
-├── exercise.md               # Step-by-step exercises
+├── LAB.md               # Step-by-step exercises
 ├── solutions.md              # Detailed solutions
 └── README.md                 # Lab overview
 ```

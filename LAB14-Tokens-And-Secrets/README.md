@@ -50,7 +50,7 @@ LAB14-Tokens-And-Secrets/
 ├── .github/workflows/
 │   ├── use-secrets.yml                # Workflow demonstrating secret usage
 │   └── github-token.yml               # Workflow demonstrating GITHUB_TOKEN
-├── exercise.md                        # Step-by-step exercises
+├── LAB.md                        # Step-by-step exercises
 ├── solutions.md                       # Detailed solutions
 └── README.md                          # Lab overview
 ```

@@ -26,7 +26,7 @@ By the end of this lab, you will:
 ```
 LAB04-Reset-Vs-Revert/
 ├── app.py
-├── exercise.md
+├── LAB.md
 ├── solutions.md
 └── README.md
 ```
@@ -35,7 +35,7 @@ LAB04-Reset-Vs-Revert/
 
 ## 🚀 Getting Started
 
-1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about undoing changes with Git.
+1. Review the `LAB.md` file, which contains a series of TODOs that will help you learn about undoing changes with Git.
 
 2. Complete each task in the exercise at your own pace.
 

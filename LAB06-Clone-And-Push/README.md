@@ -26,7 +26,7 @@ By the end of this lab, you will:
 ```
 LAB06-Clone-And-Push/
 ├── hello.md
-├── exercise.md
+├── LAB.md
 ├── solutions.md
 └── README.md
 ```
@@ -35,7 +35,7 @@ LAB06-Clone-And-Push/
 
 ## 🚀 Getting Started
 
-1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about remote repositories.
+1. Review the `LAB.md` file, which contains a series of TODOs that will help you learn about remote repositories.
 
 2. Complete each task in the exercise at your own pace.
 

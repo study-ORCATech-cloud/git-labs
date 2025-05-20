@@ -26,7 +26,7 @@ By the end of this lab, you will:
 ```
 LAB03-Branching-Basics/
 ├── main.py
-├── exercise.md
+├── LAB.md
 ├── solutions.md
 └── README.md
 ```
@@ -35,7 +35,7 @@ LAB03-Branching-Basics/
 
 ## 🚀 Getting Started
 
-1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn about Git branching and merging.
+1. Review the `LAB.md` file, which contains a series of TODOs that will help you learn about Git branching and merging.
 
 2. Complete each task in the exercise at your own pace.
 

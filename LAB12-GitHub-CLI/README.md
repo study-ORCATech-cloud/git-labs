@@ -56,7 +56,7 @@ GitHub CLI (`gh`) is a powerful tool that helps bridge the gap between local dev
 
 ```
 LAB12-GitHub-CLI/
-├── exercise.md              # Step-by-step exercises
+├── LAB.md              # Step-by-step exercises
 ├── solutions.md             # Detailed solutions
 └── README.md                # Lab overview
 ```

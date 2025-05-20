@@ -27,7 +27,7 @@ By the end of this lab, you will:
 LAB01-Initialize-Git-And-Gitignore/
 ├── .gitignore
 ├── example.py
-├── exercise.md
+├── LAB.md
 ├── solutions.md
 └── README.md
 ```
@@ -36,7 +36,7 @@ LAB01-Initialize-Git-And-Gitignore/
 
 ## 🚀 Getting Started
 
-1. Review the `exercise.md` file, which contains a series of TODOs that will help you learn Git initialization and .gitignore setup.
+1. Review the `LAB.md` file, which contains a series of TODOs that will help you learn Git initialization and .gitignore setup.
 
 2. Complete each task in the exercise at your own pace.
 

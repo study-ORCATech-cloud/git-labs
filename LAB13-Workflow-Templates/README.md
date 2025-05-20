@@ -53,7 +53,7 @@ LAB13-Workflow-Templates/
 ├── project-repo/               # Repository using the template
 │   └── .github/workflows/
 │       └── main.yml            # Workflow that calls the template
-├── exercise.md                 # Step-by-step exercises
+├── LAB.md                 # Step-by-step exercises
 ├── solutions.md                # Detailed solutions
 └── README.md                   # Lab overview
 ```
