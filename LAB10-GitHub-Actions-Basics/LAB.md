@@ -14,23 +14,23 @@ Follow these steps to complete the lab:
 * Add a step that lists the files in the current directory using the `ls -la` command.
 * Commit and push your workflow file to GitHub.
 
-## Task 3: Create a Simple Python Application
-* Create a file named `main.py` in the root of your repository.
-* Write a simple Python script that prints a message and the current date/time.
-* Modify your workflow file to add a step that runs this Python script.
+## Task 3: Create a Simple Text File
+* Create a file named `main.txt` in the root of your repository.
+* Write a simple text file that contains information about your project.
+* Modify your workflow file to add a step that displays the contents of this text file using the `cat` command.
 * Commit and push your changes to GitHub.
 
 ## Task 4: Work with Environment Variables
 * Modify your workflow file to define an environment variable called `GREETING` with a value of your choice.
 * Add a step that prints this environment variable using `echo $GREETING`.
-* Add a step in your Python script to read and print an environment variable.
-* Update your workflow to pass the environment variable to the Python script.
+* Add a step that displays the environment variable and writes it to a new file.
+* Add a step that combines your text file with additional information into a processed output file.
 
 ## Task 5: Using Actions from the Marketplace
-* Add a step to your workflow that uses the `actions/setup-python@v4` action to set up Python.
-* Configure the action to use a specific Python version (e.g., 3.9).
-* Add a step that installs dependencies using `pip install` (you can use simple packages like `requests` or `pytest`).
-* Add a step that runs a Python command using the installed packages.
+* Explore the GitHub Actions Marketplace and find an action that interests you.
+* Add a step to your workflow that uses this action (for example, actions for notifications, formatting, etc.).
+* Configure the action according to its documentation.
+* Push your changes and observe the action's effect in your workflow run.
 
 ## Task 6: Work with Conditional Steps
 * Add a step to your workflow that only runs when the branch is `main` (or your default branch).
@@ -44,8 +44,8 @@ Follow these steps to complete the lab:
 * Identify any failed steps and understand why they failed.
 
 ## Task 8: Create a Matrix Build
-* Modify your workflow to include a matrix strategy that tests your code on multiple Python versions (e.g., 3.8, 3.9, 3.10).
-* Configure the `actions/setup-python@v4` action to use the version from the matrix.
+* Modify your workflow to include a matrix strategy that tests your workflow on multiple operating systems (e.g., ubuntu-latest, windows-latest, macos-latest).
+* Configure any OS-specific commands with appropriate conditionals.
 * Push your changes and observe the matrix builds in the Actions tab.
 
 ## Bonus Task

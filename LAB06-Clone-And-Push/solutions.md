@@ -39,20 +39,16 @@ A repository for learning how to work with remote Git repositories and GitHub.
 This project demonstrates basic GitHub operations including cloning, pushing, and managing remote repositories.
 EOF
 
-# Create hello.py
-cat > hello.py << EOF
-# A simple Python script for our GitHub demo
+# Create hello.txt
+cat > hello.txt << EOF
+Hello, GitHub!
 
-def main():
-    print("Hello, GitHub!")
-
-if __name__ == "__main__":
-    main()
+This is a sample text file for demonstrating Git remote operations.
 EOF
 
 # Add and commit the files
-git add README.md hello.py
-git commit -m "Initial commit: Add README and hello.py"
+git add README.md hello.txt
+git commit -m "Initial commit: Add README and hello.txt"
 ```
 
 ## Task 4: Push to GitHub
@@ -66,7 +62,7 @@ git push origin main  # or git push origin master (depending on your default bra
 
 To verify:
 1. Open your web browser and navigate to `https://github.com/your-username/git-remote-lab`
-2. You should see both README.md and hello.py files
+2. You should see both README.md and hello.txt files
 3. Click on "commits" to view the commit history
 
 ## Task 5: Modify Files and Push Again
@@ -76,33 +72,23 @@ cat >> README.md << EOF
 
 ## Features
 
-- Simple Python script demonstration
+- Simple text file demonstration
 - Git remote repository practice
 - Basic GitHub workflow
 EOF
 
-# Modify hello.py
-cat > hello.py << EOF
-# A simple Python script for our GitHub demo
+# Modify hello.txt
+cat > hello.txt << EOF
+Hello, GitHub!
 
-def get_greeting(name="GitHub"):
-    return f"Hello, {name}!"
+This is a sample text file for demonstrating Git remote operations.
 
-def main():
-    message = get_greeting()
-    print(message)
-    
-    # Also demonstrate a custom greeting
-    custom_message = get_greeting("Git User")
-    print(custom_message)
-
-if __name__ == "__main__":
-    main()
+Additional greeting: Hello, Git User! Welcome to the remote repository.
 EOF
 
 # Commit the changes
-git add README.md hello.py
-git commit -m "Update README with features section and enhance hello.py with greeting function"
+git add README.md hello.txt
+git commit -m "Update README with features section and enhance hello.txt with additional greeting"
 
 # Push changes
 git push origin main
@@ -117,16 +103,16 @@ git remote -v
 # origin  https://github.com/your-username/git-remote-lab.git (push)
 
 # Create a new file
-cat > config.py << EOF
+cat > config.txt << EOF
 # Configuration for our application
 
-DEBUG = True
-VERSION = "0.1.0"
-API_URL = "https://api.example.com/v1"
+DEBUG = TRUE
+VERSION = 0.1.0
+API_URL = https://api.example.com/v1
 EOF
 
 # Commit without pushing
-git add config.py
+git add config.txt
 git commit -m "Add configuration file"
 
 # Check status
@@ -198,46 +184,37 @@ cat > AUTHENTICATION.md << EOF
    \`\`\`bash
    ssh-keygen -t ed25519 -C "your_email@example.com"
    \`\`\`
-   - Use RSA with 4096 bits if ed25519 is not available:
-   \`\`\`bash
-   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-   \`\`\`
 
-3. **Start the SSH agent**:
+3. **Add the SSH key to ssh-agent**:
    \`\`\`bash
    eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_ed25519  # or id_rsa if using RSA
+   ssh-add ~/.ssh/id_ed25519
    \`\`\`
 
-4. **Add SSH key to GitHub**:
-   - Copy your public key:
-   \`\`\`bash
-   cat ~/.ssh/id_ed25519.pub | clip  # On Windows
-   cat ~/.ssh/id_ed25519.pub | pbcopy  # On macOS
-   cat ~/.ssh/id_ed25519.pub  # On Linux (then copy manually)
-   \`\`\`
+4. **Add the SSH key to your GitHub account**:
+   - Copy the SSH public key to clipboard:
+     \`\`\`bash
+     cat ~/.ssh/id_ed25519.pub
+     \`\`\`
    - Go to GitHub → Settings → SSH and GPG keys → New SSH key
-   - Paste your key and save
+   - Paste your key and give it a title
+   - Click "Add SSH key"
 
 5. **Test your connection**:
    \`\`\`bash
    ssh -T git@github.com
    \`\`\`
 
-6. **Switch your repository to use SSH**:
+6. **Change remote URL to use SSH**:
    \`\`\`bash
    git remote set-url origin git@github.com:your-username/git-remote-lab.git
    \`\`\`
 EOF
 
-# Commit and push this file
+# Add and commit the file
 git add AUTHENTICATION.md
-git commit -m "Add documentation on GitHub authentication methods"
+git commit -m "Add documentation on GitHub authentication options"
+
+# Push to GitHub
 git push origin main
-
-# Configure repository to use SSH (if using HTTPS)
-git remote set-url origin git@github.com:your-username/git-remote-lab.git
-
-# Verify the change
-git remote -v
 ``` 

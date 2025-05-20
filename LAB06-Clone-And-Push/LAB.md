@@ -15,7 +15,7 @@ Follow these steps to complete the lab:
 
 ## Task 3: Create Local Content
 * Create a README.md file with a project title and brief description.
-* Create a Python file called `hello.py` with a simple "Hello, GitHub!" print statement.
+* Create a text file called `hello.txt` with a simple "Hello, GitHub!" message.
 * Add and commit both files with an appropriate message.
 
 ## Task 4: Push to GitHub
@@ -25,7 +25,7 @@ Follow these steps to complete the lab:
 
 ## Task 5: Modify Files and Push Again
 * Make a change to the README.md file by adding a new section about project features.
-* Modify `hello.py` to include a function that returns a greeting message.
+* Modify `hello.txt` to include an additional greeting message.
 * Commit these changes with a descriptive message.
 * Push your new commits to GitHub.
 * Verify the changes appear in the GitHub repository.

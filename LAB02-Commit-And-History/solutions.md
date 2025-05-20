@@ -9,34 +9,33 @@ mkdir git-history-lab
 cd git-history-lab
 git init
 
-# Create main.py with initial content
-echo 'print("Hello from Version 1")' > main.py
+# Create main.txt with initial content
+echo 'Version 1' > main.txt
 
 # Make initial commit
-git add main.py
-git commit -m "Initial commit: Add main.py with Version 1"
+git add main.txt
+git commit -m "Initial commit: Add main.txt with Version 1"
 ```
 
 ## Task 2: Make Multiple Commits
 ```bash
-# Update main.py with greeting function
-cat > main.py << EOF
-def greet(name):
-    return f"Hello, {name}!"
+# Update main.txt with greeting message
+cat > main.txt << EOF
+Version 1
 
-print("Hello from Version 2")
-print(greet("Git User"))
+Hello, Git User!
+Welcome to the Git History Lab!
 EOF
 
-# Commit the greeting function
-git add main.py
-git commit -m "Add greeting function to main.py"
+# Commit the greeting message
+git add main.txt
+git commit -m "Add greeting message to main.txt"
 
 # Create README.md
 cat > README.md << EOF
 # Git History Lab
 
-A simple Python project for learning Git commit history and version tracking.
+A simple project for learning Git commit history and version tracking.
 
 This project demonstrates:
 - Basic Git commands
@@ -48,22 +47,24 @@ EOF
 git add README.md
 git commit -m "Add project README with description"
 
-# Update main.py with sum function
-cat > main.py << EOF
-def greet(name):
-    return f"Hello, {name}!"
+# Update main.txt with Git commands list
+cat > main.txt << EOF
+Version 1
 
-def sum_numbers(a, b):
-    return a + b
+Hello, Git User!
+Welcome to the Git History Lab!
 
-print("Hello from Version 3")
-print(greet("Git User"))
-print(f"Sum of 5 and 7 is: {sum_numbers(5, 7)}")
+Git Commands I've Learned:
+- git init: Initialize a repository
+- git add: Stage changes
+- git commit: Save changes to history
+- git status: Check current state
+- git log: View commit history
 EOF
 
-# Commit the sum function
-git add main.py
-git commit -m "Add sum_numbers function to main.py"
+# Commit the Git commands list
+git add main.txt
+git commit -m "Add list of Git commands to main.txt"
 ```
 
 ## Task 3: Explore Commit History
@@ -90,7 +91,7 @@ git log --author="Your Name" --name-status
 git diff
 
 # Make a change without committing
-echo "# This line will be uncommitted" >> main.py
+echo "# This line will be uncommitted" >> main.txt
 
 # View uncommitted changes
 git diff
@@ -99,10 +100,10 @@ git diff
 # (Replace these hashes with your actual commit hashes)
 git log --oneline
 # Example output:
-# a1b2c3d Add sum_numbers function to main.py
+# a1b2c3d Add list of Git commands to main.txt
 # e4f5g6h Add project README with description  
-# i7j8k9l Add greeting function to main.py
-# m0n1o2p Initial commit: Add main.py with Version 1
+# i7j8k9l Add greeting message to main.txt
+# m0n1o2p Initial commit: Add main.txt with Version 1
 
 git diff m0n1o2p a1b2c3d
 ```
@@ -125,17 +126,17 @@ cat > HISTORY.md << EOF
 
 This file documents the progression of commits in this repository:
 
-1. \`m0n1o2p\` - Initial commit: Add main.py with Version 1
-   Created the project with a basic Python file.
+1. \`m0n1o2p\` - Initial commit: Add main.txt with Version 1
+   Created the project with a basic text file.
 
-2. \`i7j8k9l\` - Add greeting function to main.py
-   Added functionality to greet users by name.
+2. \`i7j8k9l\` - Add greeting message to main.txt
+   Added a welcoming message for users.
 
 3. \`e4f5g6h\` - Add project README with description
    Added documentation explaining the project purpose.
 
-4. \`a1b2c3d\` - Add sum_numbers function to main.py
-   Added numerical calculation functionality.
+4. \`a1b2c3d\` - Add list of Git commands to main.txt
+   Added a reference list of Git commands learned.
 
 *Note: Replace the commit hashes above with your actual hashes.*
 EOF
@@ -147,8 +148,8 @@ git commit -m "Add HISTORY.md documenting our commit progression"
 
 ## Bonus Task
 ```bash
-# See who changed each line of main.py
-git blame main.py
+# See who changed each line of main.txt
+git blame main.txt
 
 # Summary of commits by author
 git shortlog

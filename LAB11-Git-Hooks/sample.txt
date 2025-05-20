@@ -1,0 +1,20 @@
+# Sample text file for Git hooks lab
+# This file will be used to test the Git hooks
+
+Welcome to the Git Hooks Lab!
+This file will be used to test various Git hooks.
+
+Here's a simple list of items:
+  1. First item
+  2. Second item
+  3. Third item
+  4. Fourth item
+  5. Fifth item
+
+Project tasks:
+- Initialize repository
+- Create Git hooks
+- Test hook functionality
+- Document the process
+
+End of sample file. 

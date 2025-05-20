@@ -9,32 +9,24 @@ mkdir git-stash-tag-lab
 cd git-stash-tag-lab
 git init
 
-# Create feature.py with initial content
-cat > feature.py << EOF
-def get_feature():
-    return "Initial version"
-
-print(get_feature())
+# Create feature.txt with initial content
+cat > feature.txt << EOF
+FEATURE: Initial version
 EOF
 
 # Make initial commit
-git add feature.py
+git add feature.txt
 git commit -m "Initial commit with base feature"
 ```
 
 ## Task 2: Working with Git Stash
 ```bash
-# Modify feature.py with incomplete function
-cat > feature.py << EOF
-def get_feature():
-    return "Initial version"
+# Modify feature.txt with incomplete feature
+cat > feature.txt << EOF
+FEATURE: Initial version
 
-def new_feature():
-    # TODO: Implement this feature
-    # This is not ready for commit yet
-    pass
-
-print(get_feature())
+NEW FEATURE: Work in progress
+This section isn't ready to commit yet
 EOF
 
 # Stash the changes
@@ -46,17 +38,15 @@ git status
 # Create a hotfix branch
 git checkout -b hotfix
 
-# Fix a "bug" in the original function
-cat > feature.py << EOF
-def get_feature():
-    return "Fixed version"  # Bug fixed
+# Fix the feature line
+cat > feature.txt << EOF
+FEATURE: Fixed version
 
-print(get_feature())
 EOF
 
 # Commit the hotfix
-git add feature.py
-git commit -m "Fix bug in get_feature function"
+git add feature.txt
+git commit -m "Fix feature text"
 
 # Switch back to main/master branch
 git checkout main  # or git checkout master
@@ -64,8 +54,8 @@ git checkout main  # or git checkout master
 # Apply stashed changes
 git stash apply
 
-# Examine the file (should have both fixed function and incomplete new function)
-cat feature.py
+# Examine the file (should have both fixed text and incomplete new feature)
+cat feature.txt
 
 # Remove the stash from stash list
 git stash drop
@@ -73,46 +63,39 @@ git stash drop
 
 ## Task 3: Using Stash with Multiple Changes
 ```bash
-# Make two different changes to feature.py
-cat > feature.py << EOF
-# This file contains feature functions
-# Added this comment at the top
+# Make two different changes to feature.txt
+cat > feature.txt << EOF
+COMMENT: This file contains features
 
-def get_feature():
-    return "Fixed version"  # Bug fixed
+FEATURE: Fixed version
 
-def new_feature():
-    # TODO: Implement this feature
-    # This is not ready for commit yet
-    pass
+NEW FEATURE: Work in progress
+This section isn't ready to commit yet
 
-def another_feature():
-    return "Another new feature"
-
-print(get_feature())
+ANOTHER FEATURE: Additional functionality
 EOF
 
 # Stash with descriptive message
-git stash push -m "Added comment and new function"
+git stash push -m "Added comment and new feature"
 
 # View stash list
 git stash list
 
-# Create and commit utils.py
-cat > utils.py << EOF
-def helper_function():
-    return "I'm a helper"
+# Create and commit utils.txt
+cat > utils.txt << EOF
+UTILITY: Helper function
+This file contains utility functions
 EOF
 
-git add utils.py
+git add utils.txt
 git commit -m "Add utilities file"
 
 # Apply and remove the stash
 git stash pop
 
 # Commit the reapplied changes
-git add feature.py
-git commit -m "Add comment and another_feature function"
+git add feature.txt
+git commit -m "Add comment and another feature section"
 ```
 
 ## Task 4: Basic Tagging
@@ -123,27 +106,22 @@ git tag v0.1
 # List all tags
 git tag
 
-# Make a change to feature.py
-cat > feature.py << EOF
-# This file contains feature functions
-# Updated for v0.2
+# Make a change to feature.txt
+cat > feature.txt << EOF
+COMMENT: This file contains features
+Updated for v0.2
 
-def get_feature():
-    return "Fixed version"  # Bug fixed
+FEATURE: Fixed version
 
-def new_feature():
-    return "New feature implemented"
+NEW FEATURE: Implemented
+Now fully implemented
 
-def another_feature():
-    return "Another new feature"
-
-print(get_feature())
-print(new_feature())
+ANOTHER FEATURE: Additional functionality
 EOF
 
 # Commit the change
-git add feature.py
-git commit -m "Implement new_feature function"
+git add feature.txt
+git commit -m "Implement new feature"
 
 # Create annotated tag
 git tag -a v0.2 -m "Version 0.2 with new feature implementation"
@@ -155,35 +133,30 @@ git show v0.2
 ## Task 5: Working with Tags
 ```bash
 # Make more commits
-cat > feature.py << EOF
-# This file contains feature functions
-# Updated for next version
+cat > feature.txt << EOF
+COMMENT: This file contains features
+Updated for next version
 
-def get_feature():
-    return "Enhanced version"  # Improved
+FEATURE: Enhanced version
 
-def new_feature():
-    return "New feature implemented"
+NEW FEATURE: Implemented
+Now fully implemented
 
-def another_feature():
-    return "Another new feature enhanced"
-
-print(get_feature())
-print(new_feature())
-print(another_feature())
+ANOTHER FEATURE: Enhanced functionality
+This feature has been improved
 EOF
 
 git commit -am "Enhance features"
 
 # Add one more file
-cat > config.py << EOF
-CONFIG = {
+cat > config.txt << EOF
+CONFIG: {
     "version": "1.0",
     "api_endpoint": "https://api.example.com"
 }
 EOF
 
-git add config.py
+git add config.txt
 git commit -m "Add configuration file"
 
 # Create tag for v1.0
@@ -196,22 +169,17 @@ git checkout v0.2
 # Create a branch from this tag
 git checkout -b legacy-support
 
-# Modify feature.py
-cat > feature.py << EOF
-# This file contains feature functions
-# Updated for legacy support
+# Modify feature.txt
+cat > feature.txt << EOF
+COMMENT: This file contains features
+Updated for legacy support
 
-def get_feature():
-    return "Fixed version (legacy)"  # Bug fixed with legacy support
+FEATURE: Fixed version (legacy)
 
-def new_feature():
-    return "New feature implemented with backward compatibility"
+NEW FEATURE: Implemented with backward compatibility
+This feature now works with older systems
 
-def another_feature():
-    return "Another new feature"
-
-print(get_feature())
-print(new_feature())
+ANOTHER FEATURE: Additional functionality
 EOF
 
 # Commit the change
@@ -221,7 +189,7 @@ git commit -am "Add legacy support modifications"
 git checkout main  # or git checkout master
 
 # Verify latest version
-cat feature.py
+cat feature.txt
 ```
 
 ## Task 6: Tag Management
@@ -276,10 +244,10 @@ git commit -m "Add tag management documentation"
 ## Bonus Task
 ```bash
 # Create a stash for demonstration
-cat >> feature.py << EOF
+cat >> feature.txt << EOF
 
-def bonus_feature():
-    return "This is a bonus feature"
+BONUS FEATURE: Extra functionality
+This is a bonus feature
 EOF
 
 git stash
@@ -309,4 +277,3 @@ EOF
 
 git add TAG-NOTES.md
 git commit -m "Add lightweight vs annotated tag comparison"
-``` 

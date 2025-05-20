@@ -25,7 +25,7 @@ By the end of this lab, you will:
 
 ```
 LAB05-Stashing-And-Tagging/
-├── feature.py
+├── feature.txt
 ├── LAB.md
 ├── solutions.md
 └── README.md
@@ -47,15 +47,15 @@ LAB05-Stashing-And-Tagging/
 mkdir stash-tag-lab
 cd stash-tag-lab
 git init
-echo "print('base version')" > feature.py
-git add feature.py
+echo "FEATURE: base version" > feature.txt
+git add feature.txt
 git commit -m "Initial commit"
 ```
 
 ### Example: Make changes but don't commit yet
 
 ```bash
-echo "print('in-progress feature')" >> feature.py
+echo "NEW FEATURE: in-progress feature" >> feature.txt
 ```
 
 ### Example: Stash the changes

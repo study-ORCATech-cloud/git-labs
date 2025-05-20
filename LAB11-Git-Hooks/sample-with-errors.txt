@@ -1,0 +1,18 @@
+# Sample text file with errors for Git hooks lab
+# This file contains intentional errors to demonstrate how hooks can catch them
+
+This file contains errors that should be caught by Git hooks.  
+
+Error 1: Trailing whitespace in the line above   
+
+Error 2: TODO: This line should be caught by the pre-commit hook
+
+Error 3: This is a very long line that exceeds the recommended maximum line length for text files according to the guidelines we've set in our hook script, which should trigger a warning or error when committing.
+
+Error 4: Duplicate words words in this line
+
+Error 5: Misspelled words like thiss and incorrekt
+
+Error 6: Using banned words like FIXME or XXX or DEBUG
+
+Error 7: Trailing whitespace at the end of file   

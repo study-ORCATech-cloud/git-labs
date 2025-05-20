@@ -26,7 +26,7 @@ By the end of this lab, you will:
 ```
 LAB01-Initialize-Git-And-Gitignore/
 ├── .gitignore
-├── example.py
+├── example.txt
 ├── LAB.md
 ├── solutions.md
 └── README.md
@@ -54,13 +54,13 @@ You will now see a `.git/` directory created. This is your local repository.
 ### Example: Create a sample file
 
 ```bash
-echo "print('Hello, Git!')" > example.py
+echo "Hello, Git!" > example.txt
 ```
 
 ### Example: Create a `.gitignore` file
 
 ```bash
-echo "__pycache__/" >> .gitignore
+echo "*.temp" >> .gitignore
 echo "*.log" >> .gitignore
 ```
 This ensures ignored files won't be tracked by Git.
@@ -75,7 +75,7 @@ git add .
 ### Example: Commit your changes
 
 ```bash
-git commit -m "Initial commit with example.py and .gitignore"
+git commit -m "Initial commit with example.txt and .gitignore"
 ```
 
 ---

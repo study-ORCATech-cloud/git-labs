@@ -25,7 +25,7 @@ By the end of this lab, you will:
 
 ```
 LAB06-Clone-And-Push/
-├── hello.md
+├── hello.txt
 ├── LAB.md
 ├── solutions.md
 └── README.md
@@ -51,8 +51,8 @@ cd my-remote-lab
 ### Example: Create a file and commit it
 
 ```bash
-echo "# Hello GitHub" > hello.md
-git add hello.md
+echo "# Hello GitHub" > hello.txt
+git add hello.txt
 git commit -m "Initial commit"
 ```
 

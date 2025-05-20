@@ -1,0 +1,4 @@
+Hello, Git!
+
+This is a simple text file example.
+You can modify this file as part of the lab exercises. 

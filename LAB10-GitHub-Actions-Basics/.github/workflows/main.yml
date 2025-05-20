@@ -25,16 +25,30 @@ jobs:
       
       - name: List repository files
         run: ls -la
-        
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-          
-      - name: Display Python version
-        run: python --version
       
-      - name: Run Python script
-        run: python main.py
-        env:
-          GREETING: "Custom greeting from the workflow step!" 
+      - name: Display system information
+        run: |
+          echo "System Information:"
+          echo "OS: $(uname -a)"
+          echo "Current directory: $(pwd)"
+          
+      - name: Display current date and time
+        run: echo "Current date and time: $(date)"
+        
+      - name: Display environment variable
+        run: echo "Greeting: $GREETING"
+        
+      - name: Read text file
+        run: cat main.txt
+        
+      - name: Append information to text file
+        run: |
+          echo "" >> processed_output.txt
+          echo "===== GITHUB ACTIONS PROCESSING RESULTS =====" >> processed_output.txt
+          echo "Current date and time: $(date)" >> processed_output.txt
+          echo "Greeting: $GREETING" >> processed_output.txt
+          echo "System Information:" >> processed_output.txt
+          echo "OS: $(uname -a)" >> processed_output.txt
+          echo "===== END OF PROCESSING =====" >> processed_output.txt
+          cat main.txt > processed_output.txt
+          cat processed_output.txt 

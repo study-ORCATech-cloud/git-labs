@@ -23,8 +23,8 @@ Important files/folders in the .git directory:
 
 ## Task 3: Create Project Files
 ```bash
-# Create app.py
-echo 'print("Hello, Git World!")' > app.py
+# Create app.txt
+echo 'Hello, Git World!' > app.txt
 
 # Create notes.txt
 cat > notes.txt << EOF
@@ -38,14 +38,13 @@ EOF
 ## Task 4: Create a .gitignore File
 ```bash
 cat > .gitignore << EOF
-# Python cache files
-__pycache__/
-*.pyc
+# Temporary files
+*.temp
 
 # Log files
 *.log
 
-# Temporary files
+# Temporary files directory
 temp_files/
 
 # Sensitive files
@@ -56,8 +55,8 @@ EOF
 ## Task 5: Check Status and Make First Commit
 ```bash
 git status
-git add .gitignore app.py notes.txt
-git commit -m "Initial commit: Add Python app, notes and gitignore"
+git add .gitignore app.txt notes.txt
+git commit -m "Initial commit: Add text files and gitignore"
 ```
 
 ## Task 6: Verify Your Setup

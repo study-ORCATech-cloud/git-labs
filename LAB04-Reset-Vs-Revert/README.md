@@ -25,7 +25,7 @@ By the end of this lab, you will:
 
 ```
 LAB04-Reset-Vs-Revert/
-├── app.py
+├── app.txt
 ├── LAB.md
 ├── solutions.md
 └── README.md
@@ -47,22 +47,22 @@ LAB04-Reset-Vs-Revert/
 mkdir reset-vs-revert-lab
 cd reset-vs-revert-lab
 git init
-echo "print('v1')" > app.py
-git add app.py
+echo "Version 1" > app.txt
+git add app.txt
 git commit -m "v1: initial commit"
 ```
 
 ### Example: Make and commit a second version
 
 ```bash
-echo "print('v2')" > app.py
+echo "Version 2" > app.txt
 git commit -am "v2: second version"
 ```
 
 ### Example: Make and commit a third version
 
 ```bash
-echo "print('v3')" > app.py
+echo "Version 3" > app.txt
 git commit -am "v3: third version"
 ```
 

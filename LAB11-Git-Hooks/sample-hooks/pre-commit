@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Sample pre-commit hook for Git
-# This script runs before a commit is created and validates Python code
+# This script runs before a commit is created and validates text files
 #
 # To install: Copy to .git/hooks/pre-commit and make executable (chmod +x)
 
@@ -21,24 +21,16 @@ if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
     # exit 1
 fi
 
-# Find all staged Python files
-files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$')
+# Find all staged text files
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(txt|md)$')
 
 if [ -n "$files" ]; then
-    echo "Checking Python files for issues..."
+    echo "Checking text files for issues..."
     
-    # Check for Python syntax errors
+    # Check for issues in each file
     for file in $files; do
-        echo "Checking syntax: $file"
-        python -m py_compile "$file"
-        if [ $? -ne 0 ]; then
-            echo "❌ Python syntax error in $file"
-            exit 1
-        fi
-    done
-    
-    # Check for trailing whitespace and debugging statements
-    for file in $files; do
+        echo "Checking: $file"
+        
         # Check for trailing whitespace
         if grep -q "[[:blank:]]$" "$file"; then
             echo "❌ Error: $file contains trailing whitespace"
@@ -46,30 +38,32 @@ if [ -n "$files" ]; then
             exit 1
         fi
         
-        # Check for debugging print statements
-        if grep -q "print.*DEBUG\|print.*REMOVE\|import pdb\|pdb\.set_trace\|breakpoint()" "$file"; then
-            echo "❌ Error: $file contains debugging statements"
-            grep -n "print.*DEBUG\|print.*REMOVE\|import pdb\|pdb\.set_trace\|breakpoint()" "$file"
+        # Check for lines longer than 80 characters
+        if grep -q ".\{81,\}" "$file"; then
+            echo "❌ Error: $file contains lines longer than 80 characters"
+            grep -n ".\{81,\}" "$file"
+            exit 1
+        fi
+        
+        # Check for TODO, FIXME, XXX or DEBUG markers
+        if grep -q "TODO\|FIXME\|XXX\|DEBUG" "$file"; then
+            echo "❌ Error: $file contains TODO, FIXME, XXX or DEBUG markers"
+            grep -n "TODO\|FIXME\|XXX\|DEBUG" "$file"
+            exit 1
+        fi
+        
+        # Check for duplicate words (using regular expression)
+        duplicates=$(grep -Eo "\b(\w+)\s+\1\b" "$file")
+        if [ -n "$duplicates" ]; then
+            echo "❌ Error: $file contains duplicate words"
+            grep -n -Eo "\b(\w+)\s+\1\b" "$file"
             exit 1
         fi
     done
     
-    # If you have flake8 installed, uncomment these lines
-    # echo "Running flake8 on Python files..."
-    # which flake8 >/dev/null 2>&1
-    # if [ $? -eq 0 ]; then
-    #     echo "$files" | xargs flake8
-    #     if [ $? -ne 0 ]; then
-    #         echo "❌ Flake8 found issues. Fix before committing."
-    #         exit 1
-    #     fi
-    # else
-    #     echo "⚠️ flake8 not installed. Skipping linting checks."
-    # fi
-    
-    echo "✅ All Python checks passed!"
+    echo "✅ All text file checks passed!"
 else
-    echo "No Python files to check."
+    echo "No text files to check."
 fi
 
 echo "Pre-commit hook completed successfully!"

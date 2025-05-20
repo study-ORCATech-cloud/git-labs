@@ -6,13 +6,13 @@ Follow these steps to complete the lab:
 * Create a new GitHub repository called `github-collaboration-lab` or use an existing one.
 * Clone the repository to your local machine.
 * Create a basic README.md file with a project title and description if it doesn't exist.
-* Add at least one code file (e.g., `app.py` with a simple "Hello World" function).
+* Add a text file called `app.txt` with a basic greeting feature description.
 * Commit and push these files to the main branch.
 
 ## Task 2: Create and Work on a Feature Branch
 * Create a new branch called `feature-user-greeting` from the main branch.
 * Switch to this new branch.
-* Modify your code file to add a new function that takes a username and returns a personalized greeting.
+* Modify your `app.txt` file to add a new section about user greeting functionality.
 * Add a new file called `CONTRIBUTORS.md` with your name or username.
 * Commit these changes with a descriptive message.
 * Push the feature branch to GitHub.
@@ -26,7 +26,7 @@ Follow these steps to complete the lab:
 
 ## Task 4: Review and Comment
 * Examine the pull request page on GitHub to see the diff view of your changes.
-* Add a comment to your own pull request explaining a specific part of your code.
+* Add a comment to your own pull request explaining a specific part of your content.
 * If working with a partner, review their pull request and leave constructive comments.
 
 ## Task 5: Modify Based on Feedback

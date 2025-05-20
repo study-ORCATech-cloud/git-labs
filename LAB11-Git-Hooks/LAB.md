@@ -5,7 +5,7 @@ Follow these steps to complete the lab:
 ## Task 1: Create a Test Repository
 * Create a new directory called `git-hooks-lab` and navigate into it.
 * Initialize a new Git repository in this directory.
-* Create a sample Python file called `sample.py` with a simple print statement.
+* Create a sample text file called `sample.txt` with a few lines of content.
 * Add and commit the file to the repository.
 
 ## Task 2: Explore Git Hooks Directory
@@ -20,11 +20,14 @@ Follow these steps to complete the lab:
 * Make the hook executable using `chmod +x`.
 * Test the hook by making a change and attempting to commit it.
 
-## Task 4: Create a Python Linting Pre-commit Hook
-* If you don't have a linter installed, install flake8 using `pip install flake8`.
-* Modify your pre-commit hook to run flake8 on all Python files in the repository.
-* Add code to make the commit fail if linting issues are found.
-* Test the hook with both clean code and code with linting issues.
+## Task 4: Create a Text Validation Pre-commit Hook
+* Modify your pre-commit hook to check text files for common issues.
+* Add checks for:
+  * Trailing whitespace
+  * Lines longer than 80 characters
+  * TODO/FIXME markers
+* Make the commit fail if any issues are found.
+* Test the hook with both clean text and text with issues.
 
 ## Task 5: Create a Commit Message Validation Hook
 * Create a new hook file called `commit-msg` in the `.git/hooks` directory.
@@ -40,7 +43,7 @@ Follow these steps to complete the lab:
 
 ## Task 7: Work with Pre-push Hook
 * Create a new hook file called `pre-push` in the `.git/hooks` directory.
-* Add commands to run tests or checks before pushing.
+* Add commands to run checks before pushing, such as validating file content.
 * Make the hook executable.
 * Test the hook by attempting to push your changes.
 

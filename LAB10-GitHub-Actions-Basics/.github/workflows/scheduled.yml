@@ -25,18 +25,24 @@ jobs:
           echo "This job runs daily at midnight UTC"
           echo "===========================================" 
       
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-      
-      - name: Run Python script
-        run: python main.py
-        env:
-          GREETING: "Greeting from scheduled workflow!"
+      - name: Display system information
+        run: |
+          echo "System Information:"
+          echo "OS: $(uname -a)"
+          echo "Current directory: $(pwd)"
+          
+      - name: Display environment variable
+        run: echo "Greeting: $GREETING"
+        
+      - name: Read text file
+        run: cat main.txt
           
       - name: Generate daily report
         run: |
           echo "Daily report generated on $(date)" > daily_report.txt
           echo "GitHub Actions scheduled workflow completed successfully" >> daily_report.txt
+          echo "Greeting used: $GREETING" >> daily_report.txt
+          echo "" >> daily_report.txt
+          echo "Contents of main.txt:" >> daily_report.txt
+          cat main.txt >> daily_report.txt
           cat daily_report.txt 

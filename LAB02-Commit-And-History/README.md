@@ -25,7 +25,7 @@ By the end of this lab, you will:
 
 ```
 LAB02-Commit-And-History/
-├── main.py
+├── main.txt
 ├── LAB.md
 ├── solutions.md
 └── README.md
@@ -47,16 +47,16 @@ LAB02-Commit-And-History/
 mkdir lab-commit-history
 cd lab-commit-history
 git init
-echo "print('Version 1')" > main.py
-git add main.py
+echo "Version 1" > main.txt
+git add main.txt
 git commit -m "Initial commit with Version 1"
 ```
 
 ### Example: Make a second change and commit
 
 ```bash
-echo "print('Version 2')" > main.py
-git add main.py
+echo "Version 2" >> main.txt
+git add main.txt
 git commit -m "Update to Version 2"
 ```
 

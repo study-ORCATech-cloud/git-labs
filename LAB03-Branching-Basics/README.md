@@ -25,7 +25,7 @@ By the end of this lab, you will:
 
 ```
 LAB03-Branching-Basics/
-├── main.py
+├── main.txt
 ├── LAB.md
 ├── solutions.md
 └── README.md
@@ -47,8 +47,8 @@ LAB03-Branching-Basics/
 mkdir branching-lab
 cd branching-lab
 git init
-echo "print('main branch')" > main.py
-git add main.py
+echo "MAIN BRANCH" > main.txt
+git add main.txt
 git commit -m "Initial commit on main"
 ```
 
@@ -56,7 +56,7 @@ git commit -m "Initial commit on main"
 
 ```bash
 git checkout -b feature-1
-echo "print('feature 1')" > main.py
+echo "MAIN BRANCH with FEATURE 1" > main.txt
 git commit -am "Update from feature-1"
 ```
 
@@ -64,7 +64,7 @@ git commit -am "Update from feature-1"
 
 ```bash
 git checkout main
-echo "print('main branch again')" > main.py
+echo "MAIN BRANCH updated" > main.txt
 git commit -am "Main branch change"
 ```
 

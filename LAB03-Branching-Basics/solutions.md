@@ -9,17 +9,14 @@ mkdir git-branching-lab
 cd git-branching-lab
 git init
 
-# Create app.py with initial content
-cat > app.py << EOF
-def main():
-    return "Main branch"
-
-print(main())
+# Create app.txt with initial content
+cat > app.txt << EOF
+MAIN BRANCH
 EOF
 
 # Make initial commit
-git add app.py
-git commit -m "Initial commit with main() function"
+git add app.txt
+git commit -m "Initial commit with main branch text"
 ```
 
 ## Task 2: Create and Work on Feature Branch
@@ -27,21 +24,17 @@ git commit -m "Initial commit with main() function"
 # Create and switch to feature-login branch
 git checkout -b feature-login
 
-# Modify app.py to add login function
-cat > app.py << EOF
-def main():
-    return "Main branch"
+# Modify app.txt to add login section
+cat > app.txt << EOF
+MAIN BRANCH
 
-def login():
-    return "User logged in"
-
-print(main())
-print(login())
+LOGIN FEATURE
+User can now log in
 EOF
 
 # Commit the changes
-git add app.py
-git commit -m "Add login function on feature-login branch"
+git add app.txt
+git commit -m "Add login feature section on feature-login branch"
 ```
 
 ## Task 3: Create Another Feature Branch
@@ -52,21 +45,17 @@ git checkout main
 # Create and switch to feature-dashboard branch
 git checkout -b feature-dashboard
 
-# Modify app.py to add dashboard function
-cat > app.py << EOF
-def main():
-    return "Main branch"
+# Modify app.txt to add dashboard section
+cat > app.txt << EOF
+MAIN BRANCH
 
-def show_dashboard():
-    return "Dashboard displayed"
-
-print(main())
-print(show_dashboard())
+DASHBOARD FEATURE
+Dashboard now displays user data
 EOF
 
 # Commit changes
-git add app.py
-git commit -m "Add show_dashboard function on feature-dashboard branch"
+git add app.txt
+git commit -m "Add dashboard feature section on feature-dashboard branch"
 ```
 
 ## Task 4: Update Main Branch
@@ -74,21 +63,17 @@ git commit -m "Add show_dashboard function on feature-dashboard branch"
 # Switch back to main branch
 git checkout main
 
-# Modify app.py to add logout function
-cat > app.py << EOF
-def main():
-    return "Main branch"
+# Modify app.txt to add logout section
+cat > app.txt << EOF
+MAIN BRANCH
 
-def logout():
-    return "User logged out"
-
-print(main())
-print(logout())
+LOGOUT FEATURE
+User can now log out
 EOF
 
 # Commit changes
-git add app.py
-git commit -m "Add logout function on main branch"
+git add app.txt
+git commit -m "Add logout feature section on main branch"
 ```
 
 ## Task 5: Merge Feature-Login
@@ -103,50 +88,41 @@ git merge feature-login
 # If Git opens an editor for the merge commit message, save and exit
 
 # Verify the result
-cat app.py
-# Output should contain both login() and logout() functions
+cat app.txt
+# Output should contain both LOGIN FEATURE and LOGOUT FEATURE sections
 ```
 
 ## Task 6: Create a Merge Conflict
 ```bash
 # Still on main branch, modify the first line
-cat > app.py << EOF
-def main():
-    return "Updated main branch"
+cat > app.txt << EOF
+UPDATED MAIN BRANCH
 
-def login():
-    return "User logged in"
+LOGIN FEATURE
+User can now log in
 
-def logout():
-    return "User logged out"
-
-print(main())
-print(login())
-print(logout())
+LOGOUT FEATURE
+User can now log out
 EOF
 
 # Commit the change
-git add app.py
-git commit -m "Update main function return value on main branch"
+git add app.txt
+git commit -m "Update main branch text on first line"
 
 # Switch to feature-dashboard
 git checkout feature-dashboard
 
 # Modify the same line to create conflict
-cat > app.py << EOF
-def main():
-    return "Dashboard branch"
+cat > app.txt << EOF
+DASHBOARD BRANCH
 
-def show_dashboard():
-    return "Dashboard displayed"
-
-print(main())
-print(show_dashboard())
+DASHBOARD FEATURE
+Dashboard now displays user data
 EOF
 
 # Commit the change
-git add app.py
-git commit -m "Update main function return value on dashboard branch"
+git add app.txt
+git commit -m "Update first line on dashboard branch"
 
 # Switch back to main
 git checkout main
@@ -158,39 +134,31 @@ git merge feature-dashboard
 
 ## Task 7: Resolve the Merge Conflict
 ```bash
-# Open app.py to see conflict markers
+# Open app.txt to see conflict markers
 # It will look something like this:
 # <<<<<<< HEAD
-# def main():
-#     return "Updated main branch"
+# UPDATED MAIN BRANCH
 # =======
-# def main():
-#     return "Dashboard branch"
+# DASHBOARD BRANCH
 # >>>>>>> feature-dashboard
 
-# Edit app.py to resolve the conflict
-cat > app.py << EOF
-def main():
-    return "Updated main branch with dashboard support"
+# Edit app.txt to resolve the conflict
+cat > app.txt << EOF
+UPDATED MAIN BRANCH WITH DASHBOARD SUPPORT
 
-def login():
-    return "User logged in"
+LOGIN FEATURE
+User can now log in
 
-def logout():
-    return "User logged out"
+LOGOUT FEATURE
+User can now log out
 
-def show_dashboard():
-    return "Dashboard displayed"
-
-print(main())
-print(login())
-print(logout())
-print(show_dashboard())
+DASHBOARD FEATURE
+Dashboard now displays user data
 EOF
 
 # Add the resolved file and complete the merge
-git add app.py
-git commit -m "Merge feature-dashboard and resolve conflict in main function"
+git add app.txt
+git commit -m "Merge feature-dashboard and resolve conflict in first line"
 ```
 
 ## Task 8: Visualize Your Branches
@@ -204,16 +172,16 @@ cat > BRANCHES.md << EOF
 
 ## Branches Created
 
-1. **main**: The default branch containing the core application functionality.
-   - Contains the main(), login(), logout(), and show_dashboard() functions
+1. **main**: The default branch containing the core application content.
+   - Contains the main text and logout, login, and dashboard feature sections
    - Serves as the integration branch for all features
 
 2. **feature-login**: A feature branch for implementing user authentication.
-   - Added the login() function
+   - Added the LOGIN FEATURE section
    - Merged into main without conflicts
 
 3. **feature-dashboard**: A feature branch for implementing the dashboard UI.
-   - Added the show_dashboard() function
+   - Added the DASHBOARD FEATURE section
    - Created a conflict with main when merging
    - Successfully resolved conflict and merged
 
@@ -221,10 +189,10 @@ cat > BRANCHES.md << EOF
 
 1. **feature-login merge**: This was a simple fast-forward or recursive merge without conflicts.
 
-2. **feature-dashboard merge**: This resulted in a conflict in the main() function that needed to be resolved manually:
-   - Main branch had updated the return value to "Updated main branch"
-   - Dashboard branch had updated it to "Dashboard branch"
-   - Resolved by combining both changes to "Updated main branch with dashboard support"
+2. **feature-dashboard merge**: This resulted in a conflict in the first line that needed to be resolved manually:
+   - Main branch had updated the text to "UPDATED MAIN BRANCH"
+   - Dashboard branch had updated it to "DASHBOARD BRANCH"
+   - Resolved by combining both changes to "UPDATED MAIN BRANCH WITH DASHBOARD SUPPORT"
    - Created a merge commit to finalize the resolution
 
 ## Visualization
@@ -247,7 +215,4 @@ git branch --merged
 
 # Delete the feature-login branch which is fully merged
 git branch -d feature-login
-
-# Try to delete feature-dashboard (should work if properly merged)
-git branch -d feature-dashboard
 ``` 

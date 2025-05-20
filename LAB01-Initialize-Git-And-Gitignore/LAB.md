@@ -9,12 +9,12 @@ Follow these steps to complete the lab:
 * List the contents of the .git directory and identify at least 3 important files/folders.
 
 ## Task 3: Create Project Files
-* Create a simple Python file called `app.py` with a print statement.
-* Create a text file called `notes.txt` with some notes about Git.
+* Create a simple text file called `app.txt` with the message "Hello, Git World!".
+* Create another text file called `notes.txt` with some notes about Git.
 
 ## Task 4: Create a .gitignore File
 * Create a `.gitignore` file that ignores:
-  - Python cache files (__pycache__/ and *.pyc)
+  - All files with .temp extension (*.temp)
   - Log files (*.log)
   - A directory called `temp_files/`
   - A specific file called `credentials.txt`

@@ -9,35 +9,26 @@ mkdir git-reset-revert-lab
 cd git-reset-revert-lab
 git init
 
-# Create app.py with Version 1
-cat > app.py << EOF
-def get_version():
-    return "Version 1"
-
-print(get_version())
+# Create app.txt with Version 1
+cat > app.txt << EOF
+Version 1
 EOF
 
 # Make initial commit
-git add app.py
+git add app.txt
 git commit -m "v1: Initial commit with Version 1"
 
 # Update to Version 2
-cat > app.py << EOF
-def get_version():
-    return "Version 2"
-
-print(get_version())
+cat > app.txt << EOF
+Version 2
 EOF
 
 # Commit Version 2
 git commit -am "v2: Update to Version 2"
 
 # Update to Version 3
-cat > app.py << EOF
-def get_version():
-    return "Version 3"
-
-print(get_version())
+cat > app.txt << EOF
+Version 3
 EOF
 
 # Commit Version 3
@@ -71,7 +62,7 @@ git reset --hard HEAD~1
 
 # Check status and file contents
 git status
-cat app.py
+cat app.txt
 # Status is clean and file should show Version 1
 ```
 
@@ -166,17 +157,14 @@ git checkout main
 git checkout -b remote-simulation
 
 # Make a change and commit it
-cat > app.py << EOF
-def get_version():
-    return "Version 4 - Remote"
-
-print(get_version())
+cat > app.txt << EOF
+Version 4 - Remote
 EOF
 
 git commit -am "v4: Update for remote demo"
 
 # Pretend this is pushed to remote
-echo "# This branch has been 'pushed' to a shared repository" >> app.py
+echo "# This branch has been 'pushed' to a shared repository" >> app.txt
 git commit -am "Add note about remote push"
 
 # Try reset - WRONG approach for pushed changes
@@ -197,90 +185,77 @@ cat >> COMPARISON.md << EOF
 
 When dealing with commits that have been pushed to a shared repository:
 
-- **Git Reset**: NEVER use reset for changes that have been pushed to a shared repository. 
-  This will cause conflicts for other team members because you're rewriting history 
-  that others depend on.
+- **Git Reset**: NEVER use reset for changes that have been pushed to a shared repository. This will cause conflicts and confusion for other developers who have pulled those changes.
 
-- **Git Revert**: ALWAYS use revert for undoing changes that have been pushed. 
-  Revert creates a new commit that undoes previous changes while preserving history,
-  which is safe for all team members working with the repository.
+- **Git Revert**: ALWAYS use revert for undoing changes in a shared repository. This creates a new commit that undoes the changes while preserving history, allowing others to pull the changes without disruption.
 
-**Rule of thumb**: Only use reset for local, unpushed changes. Always use revert for shared changes.
+Remember: Reset rewrites history, Revert adds to history. Only rewrite history that you haven't shared yet.
 EOF
 
 git add COMPARISON.md
-git commit -m "Update comparison with remote repository best practices"
+git commit -m "Add advice for remote repositories"
 ```
 
 ## Task 6: Revert a Merge Commit
 ```bash
-# Start from main branch
+# Go back to main
 git checkout main
 
 # Create feature branches
 git checkout -b feature-x
-cat > app.py << EOF
-def get_version():
-    return "Version 3 - Feature X"
-
-def feature_x():
-    return "This is feature X"
-
-print(get_version())
-print(feature_x())
+cat > app.txt << EOF
+Version 3 - Feature X
 EOF
 git commit -am "Implement Feature X"
 
 git checkout main
 git checkout -b feature-y
-cat > app.py << EOF
-def get_version():
-    return "Version 3 - Feature Y"
-
-def feature_y():
-    return "This is feature Y"
-
-print(get_version())
-print(feature_y())
+cat > app.txt << EOF
+Version 3 - Feature Y
 EOF
 git commit -am "Implement Feature Y"
 
-# Switch to main and merge feature-x with a merge commit
+# Return to main and merge feature-x with no-ff
 git checkout main
-git merge feature-x --no-ff -m "Merge feature-x into main"
-
-# Check the log to get the merge commit hash
-git log --oneline
-# Example: a1b2c3d Merge feature-x into main
+git merge --no-ff feature-x
+# This creates a merge commit
 
 # Revert the merge commit
+# First identify the merge commit hash
+git log --oneline
+# Example: a1b2c3d Merge branch 'feature-x'
+
+# Revert the merge with -m 1 to preserve main branch line
 git revert -m 1 a1b2c3d
 
-# Document the process
+# Create documentation
 cat > MERGE-REVERT.md << EOF
-# Reverting Merge Commits
+# Reverting a Merge Commit
 
-## The Process
+## Process
 
-1. Created two feature branches: \`feature-x\` and \`feature-y\`
-2. Made distinct changes to each branch
-3. Merged \`feature-x\` into \`main\` with \`--no-ff\` to create a merge commit
-4. Used \`git revert -m 1 <merge-commit-hash>\` to revert the merge
+1. Created feature-x and feature-y branches
+2. Made separate changes in each
+3. Merged feature-x into main using --no-ff (no fast-forward)
+4. Used git revert with -m 1 to undo the merge
 
-## Understanding the Command
+## Explanation
 
-- \`git revert -m 1 <merge-commit-hash>\`:
-  - \`-m 1\` specifies which parent to revert to (mainline)
-  - \`1\` refers to the first parent (the branch we merged into - main)
-  - \`2\` would refer to the second parent (the branch we merged from - feature-x)
+When reverting a merge commit, Git needs to know which parent to follow:
+- The -m 1 option tells Git to follow the first parent (main branch)
+- The -m 2 option would follow the second parent (feature branch)
+
+Using -m 1 effectively undoes all changes that came in from the feature branch.
 
 ## Important Notes
 
-- Reverting a merge creates a new commit that undoes all the changes from the merged branch
-- After reverting a merge, if you want to re-merge the same branch later, you'll need to:
-  1. Revert the revert commit (to prevent duplicate conflict resolution)
-  2. Then merge the branch again
-- Use this approach cautiously as it can create complex history trees
+1. After reverting a merge, the feature branch changes are now considered "already undone"
+2. Trying to merge the same branch again may not work as expected
+3. To re-merge those changes, you would need to:
+   - Revert the revert commit, or
+   - Create a new branch from the original feature branch
+
+This is why feature branches should typically be small and focused, to avoid complex merge reverts.
 EOF
 
 git add MERGE-REVERT.md
@@ -289,21 +264,14 @@ git commit -m "Add documentation on reverting merge commits"
 
 ## Bonus Task
 ```bash
-# Explore Git reflog
+# Look at reflog to find "lost" commits
 git reflog
 
-# Example of recovering lost commits
-# (This is a demonstration assuming a commit was lost via hard reset)
-git checkout some-branch
-git reset --hard HEAD~3  # This would "lose" 3 commits
-git reflog  # See the lost commits and their hashes
-git reset --hard HEAD@{2}  # Recover to a specific point in reflog
-
-# Batching multiple reverts
+# Try batch revert
 git checkout main
-git revert --no-commit HEAD~2
-git revert --no-commit HEAD~1
-git revert --no-commit HEAD
-git status  # Review the combined changes
-git commit -m "Revert the last three commits in one go"
+git revert --no-commit HEAD~2..HEAD
+# This stages reverts for the last 2 commits without committing yet
+
+# Make a single commit for multiple reverts
+git commit -m "Batch revert of last 2 commits"
 ``` 

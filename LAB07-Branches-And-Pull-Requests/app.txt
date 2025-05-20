@@ -1,0 +1,4 @@
+FEATURE: Basic greeting
+
+This file contains text to simulate application features.
+The basic greeting feature says: "Hello, World!" 

@@ -1,46 +1,80 @@
 #!/bin/bash
 
 # Sample post-commit hook for Git
-# This script runs after a commit has been created and displays information
+# This script runs after a commit is created and provides a summary
 #
 # To install: Copy to .git/hooks/post-commit and make executable (chmod +x)
 
-echo "==============================================="
-echo "Running post-commit hook"
-echo "==============================================="
+echo "================================================"
+echo "Running post-commit hook. Generating commit summary..."
+echo "================================================"
 
-# Get information about the commit
+# Get the commit hash of the most recent commit
 commit_hash=$(git rev-parse HEAD)
 commit_short_hash=$(git rev-parse --short HEAD)
-commit_author=$(git log -1 --format="%an <%ae>")
-commit_date=$(git log -1 --format="%ad" --date=local)
-commit_message=$(git log -1 --format="%s")
-branch=$(git rev-parse --abbrev-ref HEAD)
 
-# Display commit summary
+# Get the commit message
+commit_msg=$(git log -1 --pretty=%B)
+
+# Get the author
+author=$(git log -1 --pretty=%an)
+author_email=$(git log -1 --pretty=%ae)
+
+# Get the date
+date=$(git log -1 --pretty=%ad --date=local)
+
+# Get the number of files changed
+files_changed=$(git show --pretty="format:" --name-only HEAD | wc -l)
+
+# List text files that were changed
+text_files=$(git show --pretty="format:" --name-only HEAD | grep -E '\.(txt|md)$')
+text_files_count=$(echo "$text_files" | grep -v "^$" | wc -l)
+
+# Get total word count diff for text files
+word_count_diff=0
+if [ "$text_files_count" -gt 0 ]; then
+    for file in $text_files; do
+        if [ -f "$file" ]; then
+            # Count words in the current version
+            current_words=$(wc -w < "$file")
+            
+            # Get the previous version and count words
+            git show HEAD~1:"$file" > /tmp/prev_file 2>/dev/null
+            if [ $? -eq 0 ]; then
+                prev_words=$(wc -w < /tmp/prev_file)
+                word_diff=$((current_words - prev_words))
+                word_count_diff=$((word_count_diff + word_diff))
+                rm /tmp/prev_file
+            else
+                # File is new
+                word_count_diff=$((word_count_diff + current_words))
+            fi
+        fi
+    done
+fi
+
+# Display summary
 echo "✅ Commit completed successfully!"
 echo ""
-echo "Commit Information:"
-echo "  Hash:      $commit_hash"
-echo "  Short Hash: $commit_short_hash"
-echo "  Author:    $commit_author"
-echo "  Date:      $commit_date"
-echo "  Branch:    $branch"
-echo "  Message:   $commit_message"
-echo ""
-
-# Display repository statistics
-total_commits=$(git rev-list --count HEAD)
-echo "Repository Statistics:"
-echo "  Total commits: $total_commits"
-echo "  Files changed in this commit: $(git show --pretty="" --name-only | wc -l)"
-echo ""
-
-# Optionally notify about next steps
-echo "Next Steps:"
-echo "  Run tests: 'npm test' or 'pytest'"
-echo "  Push changes: 'git push origin $branch'"
-echo "==============================================="
+echo "Commit Summary:"
+echo "-----------------------------------------"
+echo "Hash:        $commit_short_hash"
+echo "Full Hash:   $commit_hash"
+echo "Author:      $author <$author_email>"
+echo "Date:        $date"
+echo "Message:     $commit_msg"
+echo "Files:       $files_changed changed"
+echo "Text Files:  $text_files_count modified"
+if [ "$text_files_count" -gt 0 ]; then
+    echo "Word Count:  $word_count_diff words added/removed"
+    echo ""
+    echo "Text Files Changed:"
+    echo "$text_files"
+fi
+echo "-----------------------------------------"
+echo "To push this commit:   git push"
+echo "To undo this commit:   git reset --soft HEAD~1"
+echo "================================================"
 
 # Example: Automatically run tests
 # npm test

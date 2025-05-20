@@ -3,10 +3,10 @@
 Follow these steps to complete the lab:
 
 ## Task 1: Setup Project with Multiple Commits
-* Create a new directory called `git-reset-revert-lab`, initialize a Git repository, and create a Python file called `app.py` with a function that prints "Version 1".
+* Create a new directory called `git-reset-revert-lab`, initialize a Git repository, and create a text file called `app.txt` that contains the line "Version 1".
 * Make your initial commit with an appropriate message.
-* Modify `app.py` to change the message to "Version 2" and make a second commit.
-* Modify `app.py` again to change the message to "Version 3" and make a third commit.
+* Modify `app.txt` to change the text to "Version 2" and make a second commit.
+* Modify `app.txt` again to change the text to "Version 3" and make a third commit.
 * Use `git log --oneline` to view your commit history and note the commit hashes.
 
 ## Task 2: Using Git Reset (Local Changes)
@@ -33,13 +33,13 @@ Follow these steps to complete the lab:
 
 ## Task 5: Working with Remote Repositories
 * Create a third branch called `remote-simulation` from your original main branch.
-* Make a change to `app.py` and commit it.
+* Make a change to `app.txt` and commit it.
 * Pretend this branch has been pushed to a shared remote repository.
 * Try using both reset and revert to undo the change, and explain in `COMPARISON.md` which approach is safer for changes that have been pushed.
 
 ## Task 6: Revert a Merge Commit
 * Create two new branches: `feature-x` and `feature-y` from your main branch.
-* Make distinct changes to `app.py` in each branch and commit them.
+* Make distinct changes to `app.txt` in each branch and commit them.
 * Switch back to main and merge `feature-x` with `--no-ff` option to force a merge commit.
 * Use `git revert -m 1 <merge-commit-hash>` to revert the merge.
 * Document this process in a file called `MERGE-REVERT.md`.

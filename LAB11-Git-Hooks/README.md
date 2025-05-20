@@ -6,7 +6,7 @@ This lab introduces Git hooks, a powerful way to automate tasks during the Git w
 
 - Understand Git hooks and their role in the Git workflow
 - Create and implement different types of Git hooks
-- Use hooks to enforce code quality standards
+- Use hooks to enforce content quality standards
 - Automate repetitive tasks in your development workflow
 - Apply hooks to enforce team development policies
 
@@ -15,11 +15,10 @@ This lab introduces Git hooks, a powerful way to automate tasks during the Git w
 - Git installed on your system
 - Basic command-line knowledge
 - Basic shell scripting familiarity
-- Python installed for code checking examples
 
 ## Lab Overview
 
-Git hooks provide a way to execute custom scripts when specific Git events occur. In this lab, you'll create several types of hooks to automate common development tasks and enforce best practices. You'll work with pre-commit hooks for code validation, commit-message hooks for standardization, and post-commit hooks for notifications.
+Git hooks provide a way to execute custom scripts when specific Git events occur. In this lab, you'll create several types of hooks to automate common development tasks and enforce best practices. You'll work with pre-commit hooks for content validation, commit-message hooks for standardization, and post-commit hooks for notifications.
 
 ## Lab Tasks
 
@@ -38,9 +37,9 @@ Git hooks provide a way to execute custom scripts when specific Git events occur
 
 ### Part 3: Advanced Hook Implementation
 
-1. Implement code quality checks using linting tools
+1. Implement content quality checks
 2. Create branch protection to prevent direct commits to main
-3. Automate testing as part of the Git workflow
+3. Automate validation as part of the Git workflow
 4. Create a global hooks configuration
 
 ## Lab Structure
@@ -52,10 +51,10 @@ LAB11-Git-Hooks/
 │   ├── commit-msg             # Example commit-msg hook
 │   ├── post-commit            # Example post-commit hook
 │   └── pre-push               # Example pre-push hook
-├── sample.py                  # Clean Python file for testing
-├── sample-with-errors.py      # Python file with intentional errors
+├── sample.txt                 # Clean text file for testing
+├── sample-with-errors.txt     # Text file with intentional errors
 ├── install-hooks.sh           # Script to install hooks
-├── LAB.md                # Step-by-step exercises
+├── LAB.md                     # Step-by-step exercises
 ├── solutions.md               # Detailed solutions
 └── README.md                  # Lab overview
 ```
@@ -71,4 +70,4 @@ After completing the lab:
 
 - [Git Hooks Documentation](https://git-scm.com/docs/githooks)
 - [Pro Git Book: Customizing Git - Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
-- [Flake8 Documentation](https://flake8.pycqa.org/) - Python linter used in examples
+- [ShellCheck](https://www.shellcheck.net/) - Shell script analysis tool

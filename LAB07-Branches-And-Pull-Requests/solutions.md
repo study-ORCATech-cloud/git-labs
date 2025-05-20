@@ -20,21 +20,16 @@ A repository for practicing branch-based workflows and pull requests on GitHub.
 This project demonstrates how to use feature branches and pull requests for collaborative development.
 EOF
 
-# Create a simple Python file
-cat > app.py << EOF
-def say_hello():
-    """
-    A simple function that returns a greeting
-    """
-    return "Hello, World!"
+# Create a simple text file
+cat > app.txt << EOF
+FEATURE: Basic greeting
 
-if __name__ == "__main__":
-    message = say_hello()
-    print(message)
+This file contains text to simulate application features.
+The basic greeting feature says: "Hello, World!"
 EOF
 
 # Commit and push to main branch
-git add README.md app.py
+git add README.md app.txt
 git commit -m "Initial commit with README and basic app"
 git push origin main
 ```
@@ -44,33 +39,17 @@ git push origin main
 # Create and switch to a new feature branch
 git checkout -b feature-user-greeting
 
-# Modify the Python file to add a new function
-cat > app.py << EOF
-def say_hello():
-    """
-    A simple function that returns a greeting
-    """
-    return "Hello, World!"
+# Modify the text file to add a new section
+cat > app.txt << EOF
+FEATURE: Basic greeting
 
-def greet_user(username):
-    """
-    Returns a personalized greeting for a specific user
-    
-    Args:
-        username (str): The name of the user to greet
-        
-    Returns:
-        str: A personalized greeting message
-    """
-    return f"Hello, {username}! Welcome to our application."
+This file contains text to simulate application features.
+The basic greeting feature says: "Hello, World!"
 
-if __name__ == "__main__":
-    message = say_hello()
-    print(message)
-    
-    # Test the user greeting
-    user_message = greet_user("GitHub User")
-    print(user_message)
+FEATURE: User greeting
+
+This feature allows personalized greetings for specific users.
+When given a username, it will display: "Hello, [username]! Welcome to our application."
 EOF
 
 # Create CONTRIBUTORS.md file
@@ -83,8 +62,8 @@ The following people have contributed to this project:
 EOF
 
 # Commit the changes
-git add app.py CONTRIBUTORS.md
-git commit -m "Add user greeting function and contributors list"
+git add app.txt CONTRIBUTORS.md
+git commit -m "Add user greeting feature and contributors list"
 
 # Push the feature branch to GitHub
 git push origin feature-user-greeting
@@ -98,10 +77,10 @@ git push origin feature-user-greeting
 3. Select base: main and compare: feature-user-greeting
 4. Add a title: "Add user greeting functionality"
 5. Add a description: 
-   "This pull request adds a new function to greet users by name.
+   "This pull request adds a new user greeting feature.
    
-   - Adds greet_user() function to app.py
-   - Includes proper docstrings
+   - Adds user greeting section to app.txt
+   - Describes the feature functionality
    - Adds CONTRIBUTORS.md file
    
    Fixes #1" (if there's an issue #1 to reference)
@@ -112,15 +91,15 @@ git push origin feature-user-greeting
 ```
 1. In the pull request view, scroll down to see the "Files changed" tab
 2. Review the changes in the diff view
-3. Click the "+" icon next to line 11 of app.py (where the function docstring is)
-4. Add a comment: "I've added comprehensive docstrings to make the function easy to understand for new contributors."
+3. Click the "+" icon next to the line where you added the user greeting feature description
+4. Add a comment: "I've added detailed documentation for this feature to make it clear how it works."
 5. Click "Add single comment"
 
 For reviewing a partner's pull request:
 1. Go to the "Pull requests" tab
 2. Click on their pull request
 3. Review the changes and add constructive comments
-4. Consider suggesting specific improvements to the code
+4. Consider suggesting specific improvements to the text
 ```
 
 ## Task 5: Modify Based on Feedback
@@ -129,38 +108,17 @@ For reviewing a partner's pull request:
 git checkout feature-user-greeting
 
 # Make additional changes based on feedback
-cat > app.py << EOF
-def say_hello():
-    """
-    A simple function that returns a greeting
-    """
-    return "Hello, World!"
+cat > app.txt << EOF
+FEATURE: Basic greeting
 
-def greet_user(username):
-    """
-    Returns a personalized greeting for a specific user
-    
-    Args:
-        username (str): The name of the user to greet
-        
-    Returns:
-        str: A personalized greeting message
-    """
-    if not username:
-        return "Hello, Guest! Welcome to our application."
-    return f"Hello, {username}! Welcome to our application."
+This file contains text to simulate application features.
+The basic greeting feature says: "Hello, World!"
 
-if __name__ == "__main__":
-    message = say_hello()
-    print(message)
-    
-    # Test the user greeting
-    user_message = greet_user("GitHub User")
-    print(user_message)
-    
-    # Test with empty username
-    guest_message = greet_user("")
-    print(guest_message)
+FEATURE: User greeting
+
+This feature allows personalized greetings for specific users.
+When given a username, it will display: "Hello, [username]! Welcome to our application."
+If no username is provided, it will display: "Hello, Guest! Welcome to our application."
 EOF
 
 # Commit and push the changes
@@ -194,46 +152,25 @@ git branch -d feature-user-greeting
 git checkout -b feature-formatting
 
 # Modify the same file and line
-cat > app.py << EOF
-def say_hello():
-    """
-    A simple function that returns a greeting
-    """
-    return "Hello, World! Welcome to our application."
+cat > app.txt << EOF
+FEATURE: Basic greeting
 
-def greet_user(username):
-    """
-    Returns a personalized greeting for a specific user
-    
-    Args:
-        username (str): The name of the user to greet
-        
-    Returns:
-        str: A personalized greeting message
-    """
-    if not username:
-        return "Hello, Guest! Welcome to our application."
-    return f"Hello, {username}! Welcome to our application."
+This file contains text to simulate application features.
+The basic greeting feature says: "Hello, World! Welcome to our application."
 
-if __name__ == "__main__":
-    message = say_hello()
-    print(message)
-    
-    # Test the user greeting
-    user_message = greet_user("GitHub User")
-    print(user_message)
-    
-    # Test with empty username
-    guest_message = greet_user("")
-    print(guest_message)
+FEATURE: User greeting
+
+This feature allows personalized greetings for specific users.
+When given a username, it will display: "Hello, [username]! Welcome to our application."
+If no username is provided, it will display: "Hello, Guest! Welcome to our application."
 EOF
 
 # Commit and push
-git commit -am "Update say_hello function to include welcome message"
+git commit -am "Update basic greeting to include welcome message"
 git push origin feature-formatting
 ```
 
-Create a pull request on GitHub and you'll see a conflict because both branches modified the same function.
+Create a pull request on GitHub and you'll see a conflict because both branches modified the same line.
 
 To resolve conflicts using GitHub interface:
 ```
@@ -252,8 +189,8 @@ git checkout feature-formatting
 git merge main
 
 # Resolve conflicts in your editor, then:
-git add app.py
-git commit -m "Resolve merge conflicts in say_hello function"
+git add app.txt
+git commit -m "Resolve merge conflicts in greeting text"
 git push origin feature-formatting
 
 # Return to GitHub to complete the merge

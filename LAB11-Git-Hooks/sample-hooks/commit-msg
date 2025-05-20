@@ -5,45 +5,49 @@
 #
 # To install: Copy to .git/hooks/commit-msg and make executable (chmod +x)
 
-commit_msg_file=$1
+echo "========================================================"
+echo "Running commit-msg hook. Validating your commit message..."
+echo "========================================================"
+
+# Get the commit message (passed as the first argument)
+commit_msg_file="$1"
 commit_msg=$(cat "$commit_msg_file")
 
-echo "==============================================="
-echo "Running commit-msg hook. Validating commit message..."
-echo "==============================================="
+# Check if the message is empty
+if [ -z "$commit_msg" ]; then
+    echo "❌ Error: Empty commit message"
+    exit 1
+fi
 
-# Check message length (minimum 10 characters)
+# Check minimum length (e.g., at least 10 characters)
 if [ ${#commit_msg} -lt 10 ]; then
-    echo "❌ Error: Commit message too short."
-    echo "   Commit messages must be at least 10 characters long."
+    echo "❌ Error: Commit message too short (less than 10 characters)"
+    echo "Current message: $commit_msg"
     exit 1
 fi
 
-# Check first letter is capitalized
-first_char=$(echo "$commit_msg" | head -1 | cut -c1)
-if ! [[ "$first_char" =~ [A-Z] ]]; then
-    echo "❌ Error: Commit message must start with a capital letter."
+# Check for a proper format: <type>: <description>
+# Types: feat, fix, docs, style, refactor, test, chore
+if ! grep -qE '^(feat|fix|docs|style|refactor|test|chore)(\([a-z]+\))?: .+' "$commit_msg_file"; then
+    echo "❌ Error: Commit message does not follow the required format"
+    echo "Format should be: <type>[optional scope]: <description>"
+    echo "Types: feat, fix, docs, style, refactor, test, chore"
+    echo ""
+    echo "Examples:"
+    echo "  feat: add new feature"
+    echo "  fix(content): fix typo in text file"
+    echo "  docs: update README"
+    echo ""
+    echo "Your message: $commit_msg"
     exit 1
 fi
 
-# Check message doesn't end with a period
-last_char=$(echo "$commit_msg" | head -1 | grep -o '.$')
-if [ "$last_char" == "." ]; then
-    echo "❌ Error: Commit message should not end with a period."
+# Check for subject lines that are too long (e.g., longer than 50 characters)
+subject_line=$(head -n 1 "$commit_msg_file")
+if [ ${#subject_line} -gt 50 ]; then
+    echo "❌ Error: Commit message subject line too long (over 50 characters)"
+    echo "Current subject: $subject_line"
     exit 1
-fi
-
-# Check for conventional commit format (optional)
-# Format: type(scope): description
-# Example: feat(auth): Add login functionality
-conventional_format="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9\-]+\))?: [A-Z].+"
-
-if ! echo "$commit_msg" | head -1 | grep -qE "$conventional_format"; then
-    echo "⚠️ Warning: Commit message doesn't follow conventional commit format."
-    echo "   Recommended format: type(scope): Description"
-    echo "   Example: feat(auth): Add login functionality"
-    # Uncomment to enforce conventional commit format
-    # exit 1
 fi
 
 echo "✅ Commit message validation passed!"

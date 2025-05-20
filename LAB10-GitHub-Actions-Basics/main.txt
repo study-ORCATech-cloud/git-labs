@@ -1,0 +1,15 @@
+==================================================
+            GitHub Actions Demo Text File            
+==================================================
+This is a simple text file that will be used with GitHub Actions.
+
+When this file is processed by GitHub Actions, it will:
+- Run on a GitHub Actions runner
+- Display the date and time of execution
+- Show environment variables that were set in the workflow
+- Show system information
+
+The GitHub Actions workflow will read this file and add additional 
+information when it runs.
+
+================================================== 

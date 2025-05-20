@@ -46,6 +46,13 @@ echo "==============================================="
 echo "Git hooks installation complete!"
 echo "The following hooks are now active:"
 ls -l "$REPO_HOOKS_DIR" | grep -v .sample
+echo ""
+echo "These hooks will help maintain text quality by:"
+echo "- Checking for trailing whitespace"
+echo "- Ensuring reasonable line lengths"
+echo "- Validating commit messages"
+echo "- Preventing commits to protected branches"
+echo "- Providing useful commit summaries"
 echo "==============================================="
 
 exit 0 

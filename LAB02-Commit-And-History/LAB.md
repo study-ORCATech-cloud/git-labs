@@ -3,13 +3,13 @@
 Follow these steps to complete the lab:
 
 ## Task 1: Create Project & Initial Commit
-* Create a new directory called `git-history-lab`, initialize a Git repository, and create a Python file called `main.py` with a simple print statement.
+* Create a new directory called `git-history-lab`, initialize a Git repository, and create a text file called `main.txt` with a simple message "Version 1".
 * Make your initial commit with an appropriate message.
 
 ## Task 2: Make Multiple Commits
-* Update `main.py` to include a function that returns a greeting message, then commit this change.
+* Update `main.txt` to include a greeting message like "Hello, Git User!", then commit this change.
 * Add a new file `README.md` with a brief project description, and commit it.
-* Add a new function to `main.py` that calculates the sum of two numbers, and commit this change.
+* Add a new section to `main.txt` with a list of Git commands you've learned so far, and commit this change.
 
 ## Task 3: Explore Commit History
 * Use `git log` to view your commit history.
@@ -18,7 +18,7 @@ Follow these steps to complete the lab:
 
 ## Task 4: Compare Versions
 * Use `git diff` to see the changes between your working directory and the last commit.
-* Create a new change in `main.py` but don't commit it yet.
+* Create a new change in `main.txt` but don't commit it yet.
 * Use `git diff` to see uncomitted changes.
 * Use `git diff` with commit hashes to compare your first and last commit.
 
@@ -31,5 +31,5 @@ Follow these steps to complete the lab:
 * Commit this file with a message explaining its purpose.
 
 ## Bonus Task
-* Use `git blame` on `main.py` to see who made each change (line by line).
+* Use `git blame` on `main.txt` to see who made each change (line by line).
 * Research and try `git shortlog` to get a summary of commits by author. 
