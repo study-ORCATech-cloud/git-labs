@@ -15,6 +15,7 @@ Follow these steps to complete the lab:
 * Check the status and understand what happened (changes are in staging area).
 * Now use `git reset --mixed HEAD~1` to undo another commit and unstage changes.
 * Check the status and understand what happened (changes are in working directory).
+* Create a new commit with the current changes so the next reset has something to act on.
 * Finally, use `git reset --hard HEAD~1` to completely remove the first commit.
 * Check the status and verify the file contents to understand what happened.
 
