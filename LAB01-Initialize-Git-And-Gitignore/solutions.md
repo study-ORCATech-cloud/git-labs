@@ -7,7 +7,7 @@ Here are the solutions to the exercises:
 mkdir my-first-repo
 cd my-first-repo
 git init
-```
+```bvcbvcbv
 
 ## Task 2: Examine the .git Directory
 ```bash
